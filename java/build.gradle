@@ -1,0 +1,37 @@
+group 'gpap_quickstart'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'Main'
+
+sourceCompatibility = 1.8
+
+sourceSets {
+    main {
+        java {
+            srcDirs= ["src/main/java"]
+        }
+        resources {
+            srcDirs= ["src/main/resources"]
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20180813'
+    // https://mvnrepository.com/artifact/com.googlecode.jsontoken/jsontoken
+    compile group: 'com.googlecode.jsontoken', name: 'jsontoken', version: '1.0'
+    // https://mvnrepository.com/artifact/com.google.api-client/google-api-client-gson
+    compile group: 'com.google.api-client', name: 'google-api-client-gson', version: '1.23.0'
+    // https://mvnrepository.com/artifact/com.google.api-client/google-api-client
+    compile group: 'com.google.api-client', name: 'google-api-client', version: '1.23.0'
+}
