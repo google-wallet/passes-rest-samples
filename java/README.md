@@ -19,7 +19,7 @@ For users to save a Google pass, they need to click a save link or save button. 
 
 To see a use this quickstart to generate a signed jwt, in your terminal/console:
 1. Follow steps 1 and 2 in [Get Access to REST API](https://developers.google.com/pay/passes/guides/get-started/basic-setup/get-access-to-rest-api) to create a Google Pay API for Passes account and tie your service account to it.
-1. [Install gradle](https://gradle.org/install/) if it is not previously installed. 
+1. [Install gradle](https://gradle.org/install/) if it is not previously installed.
 1. In your console, navigate to where the directory where you downloaded the quickstart files.
 1. Edit the following string values in the file `src/main/java/com/google/gpap/quickstart/Config.java`:
 	1. SERVICE_ACCOUNT_EMAIL_ADDRESS: the value of the email in your service account key file.
@@ -42,9 +42,9 @@ If you want to save a different vertical, you will need to add code to each file
 1. Implement boarding pass definitions in `src/main/java/com/google/gpap/quickstart/ResourceDefinitions.java`
 	1. Check [design](https://developers.google.com/pay/passes/guides/pass-verticals/boarding-passes/design)
 	1. Check reference API: [class](https://developers.google.com/pay/passes/reference/v1/flightclass/insert) | [object](https://developers.google.com/pay/passes/reference/v1/flightobject/insert)
-	    1. To save you time from implementing definitions and REST calls, use the Java [client library](https://developers.google.com/pay/passes/support/libraries#libraries). Note the online reference API is the source of truth. The one in this quickstart `libs/google-api-services-walletobjects-v1-rev20180924-1.25.0.jar` may not be the newest.
+	    1. To save you time from implementing definitions and REST calls, use the Java [client library](https://developers.google.com/pay/passes/support/libraries#libraries). Note the online reference API is the source of truth. The one in this quickstart `libs/google-api-services-walletobjects-(VERSION).jar` may not be the newest.
 1. Implement vertical-specific code in `src/main/java/com/google/gpap/quickstart/Services.java`
 	1. instantiate the new flight class/object definitions, and build your JWT accordingly.
 1. (Optional) Implement new API methods in `src/main/java/com/google/gpap/quickstart/RestMethods.java`
 	1. If you want to change data to inserted classes or objects, implement update() and patch(). Check reference API: [summary](https://developers.google.com/pay/passes/reference/v1/)
-	    1. These methods are implemented in the Java [client library](https://developers.google.com/pay/passes/support/libraries#libraries). Check `libs/google-api-services-walletobjects-v1-rev20180924-1.25.0.jar`
+	    1. These methods are implemented in the Java [client library](https://developers.google.com/pay/passes/support/libraries#libraries). Check `libs/google-api-services-walletobjects-(VERSION).jar`
