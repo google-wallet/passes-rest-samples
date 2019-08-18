@@ -19,7 +19,7 @@ For users to save a Google pass, they need to click a save link or save button. 
 
 To see a use this quickstart to generate a signed jwt, in your terminal/console:
 1. Follow steps 1 and 2 in [Get Access to REST API](https://developers.google.com/pay/passes/guides/get-started/basic-setup/get-access-to-rest-api) to create a Google Pay API for Passes account and tie your service account to it.
-1. Set up [virtualenv](https://virtualenv.pypa.io/en/stable/) with pyth 2.7.10 to create isolated python environment. See [installing and using virtualenv](https://cloud.google.com/python/setup#installing_and_using_virtualenv)
+1. Set up [virtualenv](https://virtualenv.pypa.io/en/stable/) to create an isolated python environment. See [installing and using virtualenv](https://cloud.google.com/python/setup#installing_and_using_virtualenv)
 1. Make sure you've "activated" the virtualenv install dependencies
 	1. `pip install -r requirements.txt`
 1. In the directory you made a virtualenv for, place thequickstart files.
