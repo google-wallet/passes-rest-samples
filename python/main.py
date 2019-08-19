@@ -17,7 +17,7 @@ limitations under the License.
 import config # contains constants
 import services # methods that returns JWTs to be used to rend "save to phone" button or update specific pass data
 
-SAVE_LINK = "https://www.android.com/payapp/savetoandroidpay/"; # Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
+SAVE_LINK = "https://pay.google.com/gp/v/save/" # Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
 
 def demoObjectJwt(verticalType ,classId, objectId):
   print('''
@@ -36,9 +36,9 @@ def demoObjectJwt(verticalType ,classId, objectId):
   objectJwt = services.makeObjectJwt(verticalType, classId, objectId)
 
   if objectJwt is not None:
-    print('This is an "object" jwt:\n%s\n' % (objectJwt) )
+    print('This is an "object" jwt:\n%s\n' % (objectJwt.decode('UTF-8')) )
     print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
-    print('Try this save link in your browser:\n%s%s' % (SAVE_LINK, objectJwt))
+    print('Try this save link in your browser:\n%s%s' % (SAVE_LINK, objectJwt.decode('UTF-8')))
 
   return
 
@@ -62,9 +62,9 @@ def demoFatJwt(verticalType, classId, objectId):
   fatJwt = services.makeFatJwt(verticalType, classId, objectId)
 
   if fatJwt is not None:
-    print('This is an "fat" jwt:\n%s\n' % (fatJwt) )
+    print('This is an "fat" jwt:\n%s\n' % (fatJwt.decode('UTF-8')) )
     print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
-    print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, fatJwt))
+    print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, fatJwt.decode('UTF-8')))
     print('However, because a "fat" jwt is long, they are not suited for hyperlinks (get truncated). Recommend only using "fat" JWt with web-JS button only. Check:\n%s' % ('https://developers.google.com/pay/passes/reference/s2w-reference'))
 
   return
@@ -89,9 +89,9 @@ def demoSkinnyJwt(verticalType, classId, objectId):
   skinnyJwt = services.makeSkinnyJwt(verticalType, classId, objectId)
 
   if skinnyJwt is not None:
-    print('This is an "skinny" jwt:\n%s\n' % (skinnyJwt) )
+    print('This is an "skinny" jwt:\n%s\n' % (skinnyJwt.decode('UTF-8')) )
     print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
-    print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, skinnyJwt))
+    print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, skinnyJwt.decode('UTF-8')))
     print('this is the shortest type of JWT; recommended for Android intents/redirects\n')
 
   return
