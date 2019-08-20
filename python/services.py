@@ -164,7 +164,7 @@ def makeFatJwt(verticalType, classId, objectId):
       googlePassJwt.addOfferClass(classResourcePayload)
       googlePassJwt.addOfferObject(objectResourcePayload)
     else:
-      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % ('https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
+      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % (verticalType, 'https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
 
     # sign JSON to make signed JWT
     signedJwt = googlePassJwt.generateSignedJwt()
@@ -233,7 +233,7 @@ def makeObjectJwt(verticalType, classId, objectId):
       # only need to add object resource definition in JWT because class was pre-inserted via REST call
       googlePassJwt.addOfferObject(objectResourcePayload)
     else:
-      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % ('https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
+      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % ( verticalType, 'https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
 
     # sign JSON to make signed JWT
     signedJwt = googlePassJwt.generateSignedJwt()
@@ -305,7 +305,7 @@ def makeSkinnyJwt(verticalType, classId, objectId):
       # only need to add objectId in JWT because class and object definitions were pre-inserted via REST call
       googlePassJwt.addOfferObject({"id": objectId})
     else:
-      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % ('https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
+      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % (verticalType, 'https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
 
     # sign JSON to make signed JWT
     signedJwt = googlePassJwt.generateSignedJwt()
