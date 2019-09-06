@@ -15,7 +15,8 @@ limitations under the License.
 """
 
 import config # contains constants
-import services # methods that returns JWTs to be used to rend "save to phone" button or update specific pass data
+import services # methods that returns JWTs to be used to rend "save to phone" button
+import uuid # std library for unique identifier generation
 
 SAVE_LINK = "https://pay.google.com/gp/v/save/" # Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
 
@@ -62,7 +63,7 @@ def demoFatJwt(verticalType, classId, objectId):
   fatJwt = services.makeFatJwt(verticalType, classId, objectId)
 
   if fatJwt is not None:
-    print('This is an "fat" jwt:\n%s\n' % (fatJwt.decode('UTF-8')) )
+    print('This is a "fat" jwt:\n%s\n' % (fatJwt.decode('UTF-8')) )
     print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
     print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, fatJwt.decode('UTF-8')))
     print('However, because a "fat" jwt is long, they are not suited for hyperlinks (get truncated). Recommend only using "fat" JWt with web-JS button only. Check:\n%s' % ('https://developers.google.com/pay/passes/reference/s2w-reference'))
@@ -106,26 +107,55 @@ def demoSkinnyJwt(verticalType, classId, objectId):
 #
 # The JWTs are used to generate save links or JS Web buttons to save Pass(es)
 #
-# 1) Get credentials and check prerequisistes in: https://developers.google.com/pay/passes/samples/quickstart-python
-# 2) Modify config.py so the credentials are correct
+# 1) Get credentials and check prerequisistes in: https://developers.google.com/pay/passes/samples/quickstart-python.
+# 2) Modify config.py so the credentials are correct.
 # 3) Try running it: python main.py . Check terminal output for server response, JWT, and save links.
 #
 #############################
 
-# your classUid should be a hash based off of pass metadata. here we hardcode
-classUid = 'my_class_id_01' # CHANGEME
-# check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerclass/insert).
+choice = ''
+
+while choice not in ['b', 'e', 'g', 'l', 'o', 't', 'q']: 
+  choice = input(('\n\n*****************************\n'
+                        'Which pass type would you like to demo?\n'
+                        'b - Boarding Passes\n'
+                        'e - Event Tickets\n'
+                        'g - Gift Cards\n'
+                        'l - Loyalty\n'
+                        'o - Offers\n'
+                        't - Transit Passes\n'
+                        'q - Quit\n'
+                        '\n\nEnter your choice:'))
+  if choice == 'b':
+    verticalType = services.VerticalType.FLIGHT
+  elif choice == 'e':
+    verticalType = services.VerticalType.EVENTTICKET
+  elif choice == 'g':
+    verticalType = services.VerticalType.GIFTCARD
+  elif choice == 'l':
+    verticalType = services.VerticalType.LOYALTY
+  elif choice == 'o':
+    verticalType = services.VerticalType.OFFER
+  elif choice == 't':
+    verticalType = services.VerticalType.TRANSIT
+  elif choice == 'q':
+    quit()
+  else:
+    print('\n* Invalid choice. Please select one of the pass types by entering it''s related letter.\n')
+
+# your classUid should be a hash based off of pass metadata, for the demo we will use pass-type_class_uniqueid
+classUid = str(verticalType).split('.')[1] + '_CLASS_'+ str(uuid.uuid4()) # CHANGEME
+# check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/o).
 # must be alphanumeric characters, '.', '_', or '-'.
 classId = '%s.%s' % (config.ISSUER_ID,classUid)
 
-# your objectUid should be a hash based off of pass metadata. Here we hardcode
-objectUid = 'my_object_Id_01' # CHANGEME
-# check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerobject/insert).
+# your objectUid should be a hash based off of pass metadata, for the demo we will use pass-type_class_uniqueid
+objectUid = str(verticalType).split('.')[1] + '_OBJECT_'+ str(uuid.uuid4()) # CHANGEME
+# check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/).
 # Must be alphanumeric characters, '.', '_', or '-'.
 objectId = '%s.%s' % (config.ISSUER_ID,objectUid)
 
 # demonstrate the different "services" that make links/values for frontend to render a functional "save to phone" button
-verticalType = services.VerticalType.OFFER
 demoFatJwt(verticalType, classId, objectId)
 demoObjectJwt(verticalType, classId, objectId)
 demoSkinnyJwt(verticalType, classId, objectId)
