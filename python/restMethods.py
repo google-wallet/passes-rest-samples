@@ -22,6 +22,7 @@ from google.auth.transport.requests import AuthorizedSession
 
 # constants from config file
 import config
+import services
 
 
 ###############################
@@ -43,15 +44,16 @@ def makeOauthCredential():
 
 ###############################
 #
-# Insert defined class with Google Pay API for Passes REST API
+# Insert class with Google Pay API for Passes REST API
 #
-# See https://developers.google.com/pay/passes/reference/v1/offerclass/insert
+# See https://developers.google.com/pay/passes/reference/v1/
 #
-# @param Dict payload - represents offer class resource.
+# @param VerticalType verticalType - type of pass
+# @param Dict payload - represents class resource
 # @return requests.Response response - response from REST call
 #
 ###############################
-def insertOfferClass(payload):
+def insertClass(verticalType, payload):
 
   headers = {
     'Accept': 'application/json',
@@ -61,8 +63,9 @@ def insertOfferClass(payload):
   response = None
 
   # Define insert() REST call of target vertical
-  uri = 'https://www.googleapis.com/walletobjects/v1'
-  path = '/%sClass' % ("offer") # Resource representation is for an Offer, so endpoint for offerClass
+  uri = 'https://walletobjects.googleapis.com/walletobjects/v1'
+  postfix = 'Class'
+  path = createPath(verticalType, postfix)
 
   # There is no Google API for Passes Client Library for Python.
   # Authorize a http client with credential generated from Google API client library.
@@ -72,7 +75,7 @@ def insertOfferClass(payload):
   # make the POST request to make an insert(); this returns a response object
   # other methods require different http methods; for example, get() requires authed_Session.get(...)
   # check the reference API to make the right REST call
-  ## https://developers.google.com/pay/passes/reference/v1/offerclass/insert
+  ## https://developers.google.com/pay/passes/reference/v1/
   ## https://google-auth.readthedocs.io/en/latest/user-guide.html#making-authenticated-requests
   response = authed_session.post(
       uri+path          # REST API endpoint
@@ -85,15 +88,16 @@ def insertOfferClass(payload):
 
 ###############################
 #
-# Get defined class with Google Pay API for Passes REST API
+# Get existing class with Google Pay API for Passes REST API
 #
-# See https://developers.google.com/pay/passes/reference/v1/offerclass/get
+# See https://developers.google.com/pay/passes/reference/v1/
 #
-# @param String classId - The unique identifier for a class.
+# @param VerticalType verticalType - type of pass
+# @param String classId - unique identifier for a class
 # @return requests.Response response - response from REST call
 #
 ###############################
-def getOfferClass(classId):
+def getClass(verticalType, classId):
 
   headers = {
     'Accept': 'application/json',
@@ -103,8 +107,10 @@ def getOfferClass(classId):
   response = None
 
   # Define get() REST call of target vertical
-  uri = 'https://www.googleapis.com/walletobjects/v1'
-  path = '/%sClass/%s' % ("offer", classId) # Resource representation is for an Offer, so endpoint for offerClass
+  uri = 'https://walletobjects.googleapis.com/walletobjects/v1'
+
+  postfix = 'Class'
+  path = createPath(verticalType, postfix, classId)
 
   # There is no Google API for Passes Client Library for Python.
   # Authorize a http client with credential generated from Google API client library.
@@ -114,7 +120,7 @@ def getOfferClass(classId):
   # make the GET request to make an get(); this returns a response object
   # other methods require different http methods; for example, get() requires authed_Session.get(...)
   # check the reference API to make the right REST call
-  ## https://developers.google.com/pay/passes/reference/v1/offerclass/get
+  ## https://developers.google.com/pay/passes/reference/v1/
   ## https://google-auth.readthedocs.io/en/latest/user-guide.html#making-authenticated-requests
   response = authed_session.get(
       uri+path          # REST API endpoint
@@ -128,13 +134,14 @@ def getOfferClass(classId):
 #
 # Insert defined object with Google Pay API for Passes REST API
 #
-# See https://developers.google.com/pay/passes/reference/v1/offerobject/insert
+# See https://developers.google.com/pay/passes/reference/v1/
 #
-# @param Dict payload - represents offer object resource.
+# @param VerticalType verticalType - represents type of pass being generated
+# @param Dict payload - represents class resource
 # @return requests.Response response - response from REST call
 #
 ###############################
-def insertOfferObject(payload):
+def insertObject(verticalType, payload):
 
   headers = {
     'Accept': 'application/json',
@@ -144,9 +151,9 @@ def insertOfferObject(payload):
   response = None
 
   # Define insert() REST call of target vertical
-  uri = 'https://www.googleapis.com/walletobjects/v1'
-  path = '/%sObject' % ("offer") # Resource representation is for an Offer, so endpoint for offerClass
-
+  uri = 'https://walletobjects.googleapis.com/walletobjects/v1'
+  postfix = 'Object'
+  path = createPath(verticalType, postfix)
   # There is no Google API for Passes Client Library for Python.
   # Authorize a http client with credential generated from Google API client library.
   ## see https://google-auth.readthedocs.io/en/latest/user-guide.html#making-authenticated-requests
@@ -155,7 +162,7 @@ def insertOfferObject(payload):
   # make the POST request to make an insert(); this returns a response object
   # other methods require different http methods; for example, get() requires authed_Session.get(...)
   # check the reference API to make the right REST call
-  ## https://developers.google.com/pay/passes/reference/v1/offerobject/insert
+  ## https://developers.google.com/pay/passes/reference/v1/
   ## https://google-auth.readthedocs.io/en/latest/user-guide.html#making-authenticated-requests
   response = authed_session.post(
       uri+path          # REST API endpoint
@@ -170,13 +177,13 @@ def insertOfferObject(payload):
 #
 # Get defined object with Google Pay API for Passes REST API
 #
-# See https://developers.google.com/pay/passes/reference/v1/offerobject/get
+# See https://developers.google.com/pay/passes/reference/v1/
 #
 # @param String objectId - The unique identifier for an object.
 # @return requests.Response response - response from REST call
 #
 ###############################
-def getOfferObject(objectId):
+def getObject(verticalType, objectId):
 
   headers = {
     'Accept': 'application/json',
@@ -186,8 +193,9 @@ def getOfferObject(objectId):
   response = None
 
   # Define get() REST call of target vertical
-  uri = 'https://www.googleapis.com/walletobjects/v1'
-  path = '/%sObject/%s' % ("offer", objectId) # Resource representation is for an Offer, so endpoint for offerObject
+  uri = 'https://walletobjects.googleapis.com/walletobjects/v1'
+  postfix = 'Object'
+  path = createPath(verticalType, postfix, objectId)
 
   # There is no Google API for Passes Client Library for Python.
   # Authorize a http client with credential generated from Google API client library.
@@ -197,7 +205,7 @@ def getOfferObject(objectId):
   # make the GET request to make an get(); this returns a response object
   # other methods require different http methods; for example, get() requires authed_Session.get(...)
   # check the reference API to make the right REST call
-  ## https://developers.google.com/pay/passes/reference/v1/offerobject/get
+  ## https://developers.google.com/pay/passes/reference/v1/
   ## https://google-auth.readthedocs.io/en/latest/user-guide.html#making-authenticated-requests
   response = authed_session.get(
       uri+path          # REST API endpoint
@@ -206,3 +214,30 @@ def getOfferObject(objectId):
 
 
   return response
+
+###############################
+#
+# Creates path for part of uri
+#
+# See https://developers.google.com/pay/passes/reference/v1/
+#
+#
+# @param VerticalType verticalType - type of pass
+# @param String postfix - postfix to use before passtype (object or class)
+# @param String id_to_use - the id part of the path
+# @return String path - /[pass type][object or class]/[id]
+###############################
+def createPath(verticalType, postfix, id_to_use=''):
+  if verticalType == services.VerticalType.FLIGHT:
+    path = '/%s%s/%s' % ("flight", postfix, id_to_use)
+  elif verticalType == services.VerticalType.EVENTTICKET:
+    path = '/%s%s/%s' % ("eventTicket", postfix, id_to_use)
+  elif verticalType == services.VerticalType.GIFTCARD:
+    path = '/%s%s/%s' % ("giftCard", postfix, id_to_use)
+  elif verticalType == services.VerticalType.LOYALTY:
+    path = '/%s%s/%s' % ("loyalty", postfix, id_to_use)
+  elif verticalType == services.VerticalType.OFFER:
+    path = '/%s%s/%s' % ("offer", postfix, id_to_use)      
+  elif verticalType == services.VerticalType.TRANSIT:
+    path = '/%s%s/%s' % ("transit", postfix, id_to_use)
+  return path

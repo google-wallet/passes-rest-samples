@@ -28,21 +28,37 @@ To see a use this quickstart to generate a signed jwt, in your terminal/console:
 	1. SERVICE_ACCOUNT_FILE: the  filename of your service account key.
 	1. ISSUER_ID: your Google Pay API for Passes Issuer Id.
 1. Run  the quickstart: `python main.py`.
+1. Choose your pass type to demo in the quickstart.
 
 Read the output, you should see:
-1. The response of insertion of the Offer Class.
-1. The response of insertion of the Offer Object.
+1. The response of insertion of the Class.
+1. The response of insertion of the Object.
 1. Variations of a signed JWT and link. For preparing a JWT, check `services.py`.
 
-## Implementing other verticals
-This code only implements REST calls/JWT save links for the Offer vertical.
+## Modifying the sample passes
+Below is the example steps for modifying these sample passes:
 
-If you want to save a different vertical, you will need to add code to each file. Below is example steps for Boarding Passes
+1. Edit the definition for the pass in `resourceDefinitions.py`
+	1. Check design and API reference according to the specific pass type:
+		* Boarding Passes - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/boarding-passes/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/flightclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/flightobject/insert)
+		* Event Tickets - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/event-tickets/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/eventticketclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/eventticketobject/insert)
+		* Gift Cards - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/gift-cards/design) 
+		| [Class](https://developers.google.com/pay/passes/reference/v1/giftcardclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/giftcardobject/insert)
+		* Loyalty - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/loyalty/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/loyaltyclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/loyaltyobject/insert)
+		* Offers - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/boarding-passes/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/offerclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/offerobject/insert)
+		* Transit - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/transit-passes/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/transitclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/transitobject/insert)
+	1. Run  the quickstart: `python main.py`.
+	1. Choose your pass type to demo in the program.
 
-1. Implement boarding pass definitions in `resourceDefinitions.py`
-	1. Check [design](https://developers.google.com/pay/passes/guides/pass-verticals/boarding-passes/design)
-	1. Check reference API: [class](https://developers.google.com/pay/passes/reference/v1/flightclass/insert) | [object](https://developers.google.com/pay/passes/reference/v1/flightobject/insert)
-1. Implement vertical-specific code in `services.py`
-	1. instantiate the new flight class/object definitions, and build your JWT accordingly.
-1. (Optional) Implement new API methods in `restMethods.py`
-	1. If you want to change data to inserted classes or objects, implement update() and patch(). Check reference API: [summary](https://developers.google.com/pay/passes/reference/v1/)
+In this quick start application, every demo run will have a unique class and object. If you want to change data of an already inserted class or object, as noted in our [use cases](https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/engage-through-google-pay), implement the update or patch methods. Check reference API [summary](https://developers.google.com/pay/passes/reference/v1/).

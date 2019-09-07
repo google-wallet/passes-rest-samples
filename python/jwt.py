@@ -63,12 +63,12 @@ class googlePassJwt:
     self.payload['loyaltyObjects'].append(resourcePayload)
 
   def addGiftcardClass(self, resourcePayload):
-    self.payload.setdefault('giftcardClasses',[])
-    self.payload['giftcardClasses'].append(resourcePayload)
+    self.payload.setdefault('giftCardClasses',[])
+    self.payload['giftCardClasses'].append(resourcePayload)
 
   def addGiftcardObject(self, resourcePayload):
-    self.payload.setdefault('giftcardObjects',[])
-    self.payload['giftcardObjects'].append(resourcePayload)
+    self.payload.setdefault('giftCardObjects',[])
+    self.payload['giftCardObjects'].append(resourcePayload)
 
   def addEventTicketClass(self, resourcePayload):
     self.payload.setdefault('eventTicketClasses',[])
@@ -85,6 +85,14 @@ class googlePassJwt:
   def addFlightObject(self, resourcePayload):
     self.payload.setdefault('flightObjects',[])
     self.payload['flightObjects'].append(resourcePayload)
+
+  def addTransitClass(self, resourcePayload):
+    self.payload.setdefault('transitClasses',[])
+    self.payload['transitClasses'].append(resourcePayload)
+
+  def addTransitObject(self, resourcePayload):
+    self.payload.setdefault('transitObjects',[])
+    self.payload['transitObjects'].append(resourcePayload)
 
   def generateUnsignedJwt(self):
     unsignedJwt = {}

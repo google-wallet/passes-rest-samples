@@ -34,18 +34,17 @@ NOT_EXIST_MESSAGE = "Will be inserted when user saves by link/button for first t
 
 #############################
 #
-#  Quickstart only implements Offer vertical
 #
 #  See all the verticals: https://developers.google.com/pay/passes/guides/overview/basics/about-google-pay-api-for-passes
 #
 #############################
 class VerticalType(Enum):
   OFFER = 1
-  # to be implemented
   EVENTTICKET = 2
   FLIGHT = 3     # also referred to as Boarding Passes
   GIFTCARD = 4
   LOYALTY =5
+  TRANSIT = 6
 
 #############################
 #
@@ -97,10 +96,7 @@ def handleInsertCallStatusCode(insertCallResponse, idType, id, checkClassId=None
     if idType == "object":
       getCallResponse = None
       # get existing object Id data
-      if verticalType == VerticalType.OFFER:
-        getCallResponse = restMethods.getOfferObject(id) # if it is a new object Id, expected status is 409
-      else:
-        raise ValueError("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals" % ( verticalType))
+      getCallResponse = restMethods.getObject(verticalType, id) # if it is a new object Id, expected status is 409
       # check if object's classId matches target classId
       classIdOfObjectId = getCallResponse.json()['classId']
       if classIdOfObjectId != checkClassId and checkClassId is not None:
@@ -121,9 +117,9 @@ def handleInsertCallStatusCode(insertCallResponse, idType, id, checkClassId=None
 #
 # See https://developers.google.com/pay/passes/reference/v1/
 #
-#  @param VerticalType verticalType - define type of pass being generated
-#  @param String classId - The unique identifier for an class.
-#  @param String objectId - The unique identifier for an object.
+#  @param VerticalType verticalType - type of pass
+#  @param String classId - unique identifier for an class
+#  @param String objectId - unique identifier for an object
 #  @return String signedJwt - a signed JWT
 #
 #############################
@@ -136,19 +132,13 @@ def makeFatJwt(verticalType, classId, objectId):
   objectResponse = None
 
   try:
-    if verticalType == VerticalType.OFFER:
-      # get class definition
-      classResourcePayload = resourceDefinitions.makeOfferClassResource(classId)
+    # get class definition and object definition
+    classResourcePayload, objectResourcePayload = getClassAndObjectDefinitions(verticalType, classId, objectId, classResourcePayload, objectResourcePayload)
 
-      # get object definition
-      objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId)
-
-      # see if Ids exist in Google backend
-      ## for a Fat JWT, the first time a user hits the save button, the class and object are inserted
-      classResponse = restMethods.getOfferClass(classId)
-      objectResponse = restMethods.getOfferObject(objectId)
-    else :
-      raise ValueError("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals" % ( verticalType))
+    # see if Ids exist in Google backend
+    ## for a Fat JWT, the first time a user hits the save button, the class and object are inserted
+    classResponse = restMethods.getClass(verticalType, classId)
+    objectResponse = restMethods.getObject(verticalType, objectId)
 
     # check response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
     # check class get response. Will print out if class exists or not. Throws error if class resource is malformed.
@@ -159,12 +149,10 @@ def makeFatJwt(verticalType, classId, objectId):
 
     # put into JSON Web Token (JWT) format for Google Pay API for Passes
     googlePassJwt = jwt.googlePassJwt()
-    if verticalType == VerticalType.OFFER:
-      # need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
-      googlePassJwt.addOfferClass(classResourcePayload)
-      googlePassJwt.addOfferObject(objectResourcePayload)
-    else:
-      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % (verticalType, 'https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
+    # need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+    loadClassIntoJWT(verticalType, googlePassJwt, classResourcePayload)
+
+    loadObjectIntoJWT(verticalType, googlePassJwt, objectResourcePayload)
 
     # sign JSON to make signed JWT
     signedJwt = googlePassJwt.generateSignedJwt()
@@ -177,6 +165,7 @@ def makeFatJwt(verticalType, classId, objectId):
   # defined in the JWT. See https://developers.google.com/pay/passes/reference/s2w-reference
   return signedJwt
 
+
 #############################
 #
 #  Generates a signed "object" JWT.
@@ -187,9 +176,9 @@ def makeFatJwt(verticalType, classId, objectId):
 #
 #  See https://developers.google.com/pay/passes/reference/v1/
 #
-#  @param VerticalType verticalType - define type of pass being generated
-#  @param String classId - The unique identifier for an class.
-#  @param String objectId - The unique identifier for an object.
+#  @param VerticalType verticalType - type of pass
+#  @param String classId - unique identifier for an class
+#  @param String objectId - unique identifier for an object
 #  @return String signedJwt - a signed JWT
 #
 #############################
@@ -202,38 +191,27 @@ def makeObjectJwt(verticalType, classId, objectId):
   objectResponse = None
 
   try:
-    if verticalType == VerticalType.OFFER:
-      # get class definition
-      classResourcePayload = resourceDefinitions.makeOfferClassResource(classId)
+  # get class definition and object definition
+    classResourcePayload, objectResourcePayload = getClassAndObjectDefinitions(verticalType, classId, objectId, classResourcePayload, objectResourcePayload)
 
-      # get object definition
-      objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId)
+    print('\nMaking REST call to insert class')
+    # make authorized REST call to explicitly insert class into Google server.
+    # if this is successful, you can check/update class definitions in Merchant Center GUI: https://pay.google.com/gp/m/issuer/list
+    classResponse = restMethods.insertClass(verticalType, classResourcePayload)
 
-      print('\nMaking REST call to insert class')
-      # make authorized REST call to explicitly insert class into Google server.
-      # if this is successful, you can check/update class definitions in Merchant Center GUI: https://pay.google.com/gp/m/issuer/list
-      classResponse = restMethods.insertOfferClass(classResourcePayload)
-
-      # check if object ID exist
-      objectResponse = restMethods.getOfferObject(objectId) # if it is a new object Id, expected status is 409
-    else :
-      raise ValueError("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals" % ( verticalType))
-
+    # check if object ID exist
+    objectResponse = restMethods.getObject(verticalType, objectId) # if it is a new object Id, expected status is 409
+  
     # continue based on response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
     # check class insert response. Will print out if class insert succeeds or not. Throws error if class resource is malformed.
-    handleInsertCallStatusCode(classResponse, "class", classId, None, None)
+    handleInsertCallStatusCode(classResponse, "class", classId, None, verticalType)
 
     # check object get response. Will print out if object exists or not. Throws error if object resource is malformed, or if existing objectId's classId does not match the expected classId
     handleGetCallStatusCode(objectResponse, "object", objectId, classId)
 
-
     # put into JSON Web Token (JWT) format for Google Pay API for Passes
     googlePassJwt = jwt.googlePassJwt()
-    if verticalType == VerticalType.OFFER:
-      # only need to add object resource definition in JWT because class was pre-inserted via REST call
-      googlePassJwt.addOfferObject(objectResourcePayload)
-    else:
-      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % ( verticalType, 'https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
+    loadObjectIntoJWT(verticalType, googlePassJwt, objectResourcePayload)
 
     # sign JSON to make signed JWT
     signedJwt = googlePassJwt.generateSignedJwt()
@@ -257,9 +235,9 @@ def makeObjectJwt(verticalType, classId, objectId):
 #
 #  See https://developers.google.com/pay/passes/reference/v1/
 #
-#  @param VerticalType verticalType - define type of pass being generated
-#  @param String classId - The unique identifier for an class.
-#  @param String objectId - The unique identifier for an object.
+#  @param VerticalType verticalType - type of pass
+#  @param String classId - unique identifier for an class
+#  @param String objectId - unique identifier for an object
 #  @return String signedJwt - a signed JWT
 #
 #############################
@@ -273,24 +251,17 @@ def makeSkinnyJwt(verticalType, classId, objectId):
   objectResponse = None
 
   try:
-    if verticalType == VerticalType.OFFER:
-      # get class definition
-      classResourcePayload = resourceDefinitions.makeOfferClassResource(classId)
+    # get class definition and object definition
+    classResourcePayload, objectResourcePayload = getClassAndObjectDefinitions(verticalType, classId, objectId, classResourcePayload, objectResourcePayload)
 
-      # get object definition
-      objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId)
+    print('\nMaking REST call to insert class: (%s)' % (classId))
+    # make authorized REST call to explicitly insert class into Google server.
+    # if this is successful, you can check/update class definitions in Merchant Center GUI: https://pay.google.com/gp/m/issuer/list
+    classResponse = restMethods.insertClass(verticalType, classResourcePayload)
 
-      print('\nMaking REST call to insert class: (%s)' % (classId))
-      # make authorized REST call to explicitly insert class into Google server.
-      # if this is successful, you can check/update class definitions in Merchant Center GUI: https://pay.google.com/gp/m/issuer/list
-      classResponse = restMethods.insertOfferClass(classResourcePayload)
-
-      print('\nMaking REST call to insert object')
-      # make authorized REST call to explicitly insert object into Google server.
-      objectResponse = restMethods.insertOfferObject(objectResourcePayload)
-
-    else :
-      raise ValueError("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals" % ( verticalType))
+    print('\nMaking REST call to insert object')
+    # make authorized REST call to explicitly insert object into Google server.
+    objectResponse = restMethods.insertObject(verticalType, objectResourcePayload)
 
     # continue based on insert response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
     # check class insert response. Will print out if class insert succeeds or not. Throws error if class resource is malformed.
@@ -301,11 +272,9 @@ def makeSkinnyJwt(verticalType, classId, objectId):
 
     # put into JSON Web Token (JWT) format for Google Pay API for Passes
     googlePassJwt = jwt.googlePassJwt()
-    if verticalType == VerticalType.OFFER:
-      # only need to add objectId in JWT because class and object definitions were pre-inserted via REST call
-      googlePassJwt.addOfferObject({"id": objectId})
-    else:
-      raise ValueError('JWT format for %s is not implemented yet. For proper JWT format, check %s' % (verticalType, 'https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt'))
+    
+    # only need to add objectId in JWT because class and object definitions were pre-inserted via REST call
+    loadObjectIntoJWT(verticalType, googlePassJwt, {"id": objectId})
 
     # sign JSON to make signed JWT
     signedJwt = googlePassJwt.generateSignedJwt()
@@ -318,4 +287,81 @@ def makeSkinnyJwt(verticalType, classId, objectId):
   return signedJwt
 
 
+#############################
+#
+#  Gets a passes's class and object definitions and loads into payload objects
+#
+#  @param VerticalType verticalType - type of pass
+#  @param String classId - unique identifier for an class
+#  @param String classResourcePayload - payload for the class
+#  @param String objectResourcePayload - payload for the object
+#
+#############################
+def getClassAndObjectDefinitions(verticalType, classId, objectId, classResourcePayload, objectResourcePayload):
+  # get class definition and object definition
+  if verticalType == VerticalType.FLIGHT:
+    classResourcePayload = resourceDefinitions.makeFlightClassResource(classId)
+    objectResourcePayload = resourceDefinitions.makeFlightObjectResource(classId, objectId)
+  elif verticalType == VerticalType.EVENTTICKET:
+    classResourcePayload = resourceDefinitions.makeEventTicketClassResource(classId)
+    objectResourcePayload = resourceDefinitions.makeEventTicketObjectResource(classId, objectId)
+  elif verticalType == VerticalType.GIFTCARD:
+    classResourcePayload = resourceDefinitions.makeGiftCardClassResource(classId)
+    objectResourcePayload = resourceDefinitions.makeGiftCardObjectResource(classId, objectId)
+  elif verticalType == VerticalType.LOYALTY:
+    classResourcePayload = resourceDefinitions.makeLoyaltyClassResource(classId)
+    objectResourcePayload = resourceDefinitions.makeLoyaltyObjectResource(classId, objectId)
+  elif verticalType == VerticalType.OFFER:
+    classResourcePayload = resourceDefinitions.makeOfferClassResource(classId)
+    objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId)          
+  elif verticalType == VerticalType.TRANSIT:
+    classResourcePayload = resourceDefinitions.makeTransitClassResource(classId)
+    objectResourcePayload = resourceDefinitions.makeTransitObjectResource(classId, objectId)
+  return classResourcePayload, objectResourcePayload
 
+
+#############################
+#
+#  Loads an object into a JWT
+#
+#  @param VerticalType verticalType - type of pass
+#  @param googlePassJwt googlePassJwt - JWT object
+#  @param String objectResourcePayload - object to insert
+#
+#############################
+def loadObjectIntoJWT(verticalType, googlePassJwt, objectResourcePayload):
+  if verticalType == VerticalType.FLIGHT:
+    googlePassJwt.addFlightObject(objectResourcePayload)
+  elif verticalType == VerticalType.EVENTTICKET:
+    googlePassJwt.addEventTicketObject(objectResourcePayload)
+  elif verticalType == VerticalType.GIFTCARD:
+    googlePassJwt.addGiftcardObject(objectResourcePayload)
+  elif verticalType == VerticalType.LOYALTY:
+    googlePassJwt.addLoyaltyObject(objectResourcePayload)
+  elif verticalType == VerticalType.OFFER:
+    googlePassJwt.addOfferObject(objectResourcePayload)        
+  elif verticalType == VerticalType.TRANSIT:
+    googlePassJwt.addTransitObject(objectResourcePayload)
+
+#############################
+#
+#  Loads a class into a JWT
+#
+#  @param VerticalType verticalType - type of pass
+#  @param googlePassJwt googlePassJwt - JWT object
+#  @param String classResourcePayload - class to insert
+#
+#############################
+def loadClassIntoJWT(verticalType, googlePassJwt, classResourcePayload):
+  if verticalType == VerticalType.FLIGHT:
+    googlePassJwt.addFlightClass(classResourcePayload)
+  elif verticalType == VerticalType.EVENTTICKET:
+    googlePassJwt.addEventTicketClass(classResourcePayload)
+  elif verticalType == VerticalType.GIFTCARD:
+    googlePassJwt.addGiftcardClass(classResourcePayload)
+  elif verticalType == VerticalType.LOYALTY:
+    googlePassJwt.addLoyaltyClass(classResourcePayload)
+  elif verticalType == VerticalType.OFFER:
+    googlePassJwt.addOfferClass(classResourcePayload)       
+  elif verticalType == VerticalType.TRANSIT:
+    googlePassJwt.addTransitClass(classResourcePayload)
