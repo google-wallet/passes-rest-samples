@@ -109,13 +109,13 @@ public class Main {
         Config config = Config.getInstance();
 
         // your classUid should be a hash based off of pass metadata. here we hardcode
-        String classUid = "my_class_id_01999"; // CHANGEME
+        String classUid = "my_class_id_01"; // CHANGEME
         // check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerclass/insert).
         // must be alphanumeric characters, ".", "_", or "-".
         String classId = String.format("%s.%s" , config.getIssuerId(), classUid);
 
         // your objectUid should be a hash based off of pass metadata. Here we hardcode
-        String objectUid = "my_object_Id_01999fat"; // CHANGEME
+        String objectUid = "my_object_Id_01"; // CHANGEME
         // check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerobject/insert).
         // Must be alphanumeric characters, ".", "_", or "-".
         String objectId = String.format("%s.%s", config.getIssuerId(), objectUid);
