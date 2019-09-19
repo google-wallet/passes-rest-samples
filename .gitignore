@@ -10,3 +10,11 @@ env/
 __pycache__/
 *.pyc
 .env
+.classpath
+.project
+java/.gradle/*
+java/bin/*
+java/build/*
+java/gradle/*
+java/.settings
+gradlew*

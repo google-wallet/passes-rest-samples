@@ -36,7 +36,7 @@ public class RestMethods {
     private RestMethods() {
         // Create an httpTransport which will be used for the REST call
         try {
-            this.httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+            httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
         } catch (IOException e) {

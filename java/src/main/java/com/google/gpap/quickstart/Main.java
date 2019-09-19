@@ -15,7 +15,7 @@
  */
 
 public class Main {
-    private static String SAVE_LINK = "https://www.android.com/payapp/savetoandroidpay/"; // Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
+    private static String SAVE_LINK = "https://pay.google.com/gp/v/save/"; // Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
 
     public static void demoFatJwt(Services.VerticalType verticalType, String classId, String objectId){
        System.out.println(
@@ -109,13 +109,13 @@ public class Main {
         Config config = Config.getInstance();
 
         // your classUid should be a hash based off of pass metadata. here we hardcode
-        String classUid = "my_class_id_01"; // CHANGEME
+        String classUid = "my_class_id_01999"; // CHANGEME
         // check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerclass/insert).
         // must be alphanumeric characters, ".", "_", or "-".
         String classId = String.format("%s.%s" , config.getIssuerId(), classUid);
 
         // your objectUid should be a hash based off of pass metadata. Here we hardcode
-        String objectUid = "my_object_Id_01"; // CHANGEME
+        String objectUid = "my_object_Id_01999fat"; // CHANGEME
         // check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerobject/insert).
         // Must be alphanumeric characters, ".", "_", or "-".
         String objectId = String.format("%s.%s", config.getIssuerId(), objectUid);

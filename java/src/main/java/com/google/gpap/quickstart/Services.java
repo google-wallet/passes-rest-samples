@@ -63,7 +63,7 @@ public class Services {
     *  @param GenericJson getCallResponse - response from a get call
     *  @param String idType - identifier of type of get call.  "object" or "class"
     *  @param String id - unique identifier of Pass for given idType
-    *  @param String checkClassId - optional. ClassId to check for if objectId exists, and idType == 'object'
+    *  @param String checkClassId - optional. ClassId to check for if objectId exists, and idType.equals('object')
     *  @return void
     *
      *******************************/
@@ -73,7 +73,7 @@ public class Services {
             System.out.println(String.format("%sId: (%s) already exists. %s", idType, id, EXISTS_MESSAGE));
 
             // for object get, do additional check
-            if (idType == "object") {
+            if (idType.equals("object")) {
                 // check if object's classId matches target classId
                 String classIdOfObjectId = (String) getCallResponse.get("classId");
                 if (!Objects.equals(classIdOfObjectId, checkClassId) && checkClassId != null) {
@@ -98,7 +98,7 @@ public class Services {
      *  @param GenericJson getCallResponse - response from a get call
      *  @param String idType - identifier of type of get call.  "object" or "class"
      *  @param String id - unique identifier of Pass for given idType
-     *  @param String checkClassId - optional. ClassId to check for if objectId exists, and idType == 'object'
+     *  @param String checkClassId - optional. ClassId to check for if objectId exists, and idType.equals('object')
      *  @param VerticalType verticalType - optional. VerticalType to fetch ClassId of existing objectId.
      *  @return void
      *
@@ -110,7 +110,7 @@ public class Services {
             System.out.println(String.format("%sId: (%s) already exists. %s", idType, id, EXISTS_MESSAGE));
 
             // for object insert, do additional check
-            if (idType == "object") {
+            if (idType.equals("object")) {
                 RestMethods restMethods = RestMethods.getInstance();
                 GenericJson objectResponse = null;
                 if (verticalType == VerticalType.OFFER) {
