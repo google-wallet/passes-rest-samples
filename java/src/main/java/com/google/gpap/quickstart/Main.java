@@ -15,7 +15,7 @@
  */
 
 public class Main {
-    private static String SAVE_LINK = "https://www.android.com/payapp/savetoandroidpay/"; // Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
+    private static String SAVE_LINK = "https://pay.google.com/gp/v/save/"; // Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
 
     public static void demoFatJwt(Services.VerticalType verticalType, String classId, String objectId){
        System.out.println(

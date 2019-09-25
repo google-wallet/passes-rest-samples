@@ -67,6 +67,11 @@ public class Config {
         // List of origins for save to phone button. Used for JWT // CHANGEME
         //// See https://developers.google.com/pay/passes/reference/s2w-reference
         this.ORIGINS = new ArrayList<String>(){
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+
             {
                 add("http://localhost:8080");
             }
@@ -77,6 +82,11 @@ public class Config {
         this.AUDIENCE = "google";
         this.JWT_TYPE = "savetoandroidpay";
         this.SCOPES =  new ArrayList<String>(){
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+
             {
                 add("https://www.googleapis.com/auth/wallet_object.issuer");
             }
