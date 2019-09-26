@@ -123,26 +123,26 @@ public class Jwt {
     }
 
     public void addGiftcardClass(JsonElement resourcePayload){
-        if( this.payload.get("giftcardClasses") == null ){
+        if( this.payload.get("giftCardClasses") == null ){
             JsonArray giftcardObjects = new JsonArray();
-            this.payload.add("giftcardClasses",giftcardObjects);
+            this.payload.add("giftCardClasses",giftcardObjects);
 
         }
-        JsonArray newPayload = (JsonArray)this.payload.get("giftcardClasses");
+        JsonArray newPayload = (JsonArray)this.payload.get("giftCardClasses");
         newPayload.add(resourcePayload);
-        this.payload.add("giftcardClasses",newPayload);
+        this.payload.add("giftCardClasses",newPayload);
 
         return;
     }
 
     public void addGiftcardObject(JsonElement resourcePayload){
-        if( this.payload.get("giftcardObjects") == null ){
+        if( this.payload.get("giftCardObjects") == null ){
             JsonArray giftcardObjects = new JsonArray();
-            this.payload.add("giftcardObjects",giftcardObjects);
+            this.payload.add("giftCardObjects",giftcardObjects);
         }
-        JsonArray newPayload = (JsonArray)this.payload.get("giftcardObjects");
+        JsonArray newPayload = (JsonArray)this.payload.get("giftCardObjects");
         newPayload.add(resourcePayload);
-        this.payload.add("giftcardObjects",newPayload);
+        this.payload.add("giftCardObjects",newPayload);
 
         return;
     }
@@ -193,6 +193,32 @@ public class Jwt {
         JsonArray newPayload = (JsonArray)this.payload.get("flightObjects");
         newPayload.add(resourcePayload);
         this.payload.add("flightObjects",newPayload);
+
+        return;
+    }
+
+    public void addTransitClass(JsonElement resourcePayload){
+        if( this.payload.get("transitClasses") == null ){
+            JsonArray transitClasses = new JsonArray();
+            this.payload.add("transitClasses",transitClasses);
+
+        }
+        JsonArray newPayload = (JsonArray)this.payload.get("transitClasses");
+        newPayload.add(resourcePayload);
+        this.payload.add("transitClasses",newPayload);
+
+        return;
+    }
+
+    public void addTransitObject(JsonElement resourcePayload){
+        if( this.payload.get("transitObjects") == null ){
+            JsonArray transitObjects = new JsonArray();
+            this.payload.add("transitObjects",transitObjects);
+
+        }
+        JsonArray newPayload = (JsonArray)this.payload.get("transitObjects");
+        newPayload.add(resourcePayload);
+        this.payload.add("transitObjects",newPayload);
 
         return;
     }
