@@ -42,18 +42,17 @@ public class Services {
 
     /*******************************
      *
-     *  Quickstart only implements Offer vertical
      *
      *  See all the verticals: https://developers.google.com/pay/passes/guides/overview/basics/about-google-pay-api-for-passes
      *
      *******************************/
     public enum VerticalType {
         OFFER
-        // to be implemented
         , EVENTTICKET
         , FLIGHT     // also referred to as Boarding Passes
         , GIFTCARD
         , LOYALTY
+        , TRANSIT
     }
 
     /*******************************
@@ -113,11 +112,25 @@ public class Services {
             if (idType.equals("object")) {
                 RestMethods restMethods = RestMethods.getInstance();
                 GenericJson objectResponse = null;
-                if (verticalType == VerticalType.OFFER) {
-                    // get object definition
-                    objectResponse = restMethods.getOfferObject(id);
-                } else {
-                    throw new Exception(String.format("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", verticalType));
+                // get object definition
+                switch (verticalType){
+                    case OFFER:
+                        objectResponse = restMethods.getOfferObject(id);
+                        break;
+                    case EVENTTICKET:
+                        objectResponse = restMethods.getEventTicketObject(id);
+                        break;
+                    case FLIGHT:
+                        objectResponse = restMethods.getFlightObject(id);
+                        break;
+                    case GIFTCARD:
+                        objectResponse = restMethods.getGiftCardObject(id);
+                        break;
+                    case LOYALTY:
+                        objectResponse = restMethods.getLoyaltyObject(id);
+                    case TRANSIT:
+                        objectResponse = restMethods.getTransitObject(id);
+                        break;
                 }
                 // check if object's classId matches target classId
                 String classIdOfObjectId = (String) objectResponse.get("classId");
@@ -161,21 +174,45 @@ public class Services {
         GenericJson objectResponse = null;
 
         try {
-            if (verticalType == VerticalType.OFFER) {
-                // get class definition
-                classResourcePayload = resourceDefinitions.makeOfferClassResource(classId);
-
-                // get object definition
-                objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId);
-
-                // see if Ids exist in Google backend
-                //// for a Fat JWT, the first time a user hits the save button, the class and object are inserted
-                classResponse = restMethods.getOfferClass(classId);
-                objectResponse = restMethods.getOfferObject(objectId);
-            } else {
-                throw new Exception(String.format("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", verticalType));
+            // get class definition, object definition and see if Ids exist. for a fat JWT, first time a user hits the save button, the class and object are inserted
+            switch (verticalType){
+                case OFFER:
+                    classResourcePayload = resourceDefinitions.makeOfferClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId);
+                    classResponse = restMethods.getOfferClass(classId);
+                    objectResponse = restMethods.getOfferObject(objectId);
+                    break;
+                case EVENTTICKET:
+                    classResourcePayload = resourceDefinitions.makeEventTicketClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeEventTicketObjectResource(classId, objectId);
+                    classResponse = restMethods.getEventTicketClass(classId);
+                    objectResponse = restMethods.getEventTicketObject(objectId);
+                    break;
+                case FLIGHT:
+                    classResourcePayload = resourceDefinitions.makeFlightClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeFlightObjectResource(classId, objectId);
+                    classResponse = restMethods.getFlightClass(classId);
+                    objectResponse = restMethods.getFlightObject(objectId);
+                    break;
+                case GIFTCARD:
+                    classResourcePayload = resourceDefinitions.makeGiftCardClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeGiftCardObjectResource(classId, objectId);
+                    classResponse = restMethods.getGiftCardClass(classId);
+                    objectResponse = restMethods.getGiftCardObject(objectId);
+                    break;
+                case LOYALTY:
+                    classResourcePayload = resourceDefinitions.makeLoyaltyClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeLoyaltyObjectResource(classId, objectId);
+                    classResponse = restMethods.getLoyaltyClass(classId);
+                    objectResponse = restMethods.getLoyaltyObject(objectId);
+                    break;
+                case TRANSIT:
+                    classResourcePayload = resourceDefinitions.makeTransitClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeTransitObjectResource(classId, objectId);
+                    classResponse = restMethods.getTransitClass(classId);
+                    objectResponse = restMethods.getTransitObject(objectId);
+                    break;
             }
-
             // check response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
             // check class get response. Will print out if class exists or not. Throws error if class resource is malformed.
             handleGetCallStatusCode(classResponse, "class", classId, null);
@@ -185,17 +222,39 @@ public class Services {
 
             // put into JSON Web Token (JWT) format for Google Pay API for Passes
             Jwt googlePassJwt = new Jwt();
-            if (verticalType == VerticalType.OFFER) {
-
-                Gson gson = new Gson(); // Use gson to change OfferClass/OfferObject instances into JSON representation
-                // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
-                googlePassJwt.addOfferClass(gson.toJsonTree(classResourcePayload));
-                googlePassJwt.addOfferObject(gson.toJsonTree(objectResourcePayload));
-            } else {
-                throw new Exception(String.format("JWT format for %s is not implemented yet. For valid JWT formats, check %s"
-                        , verticalType, "https://developers.google.com/pay/passes/reference/s2w-reference//google-pay-api-for-passes-jwt"));
+            Gson gson = new Gson(); // Use gson to turn the class/object instances into JSON representation
+            switch (verticalType){
+                case OFFER:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addOfferClass(gson.toJsonTree(classResourcePayload));
+                    googlePassJwt.addOfferObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case EVENTTICKET:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addEventTicketClass(gson.toJsonTree(classResourcePayload));
+                    googlePassJwt.addEventTicketObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case FLIGHT:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addFlightClass(gson.toJsonTree(classResourcePayload));
+                    googlePassJwt.addFlightObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case GIFTCARD:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addGiftcardClass(gson.toJsonTree(classResourcePayload));
+                    googlePassJwt.addGiftcardObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case LOYALTY:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addLoyaltyClass(gson.toJsonTree(classResourcePayload));
+                    googlePassJwt.addLoyaltyObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case TRANSIT:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addTransitClass(gson.toJsonTree(classResourcePayload));
+                    googlePassJwt.addTransitObject(gson.toJsonTree(objectResourcePayload));
+                    break;
             }
-
             // sign JSON to make signed JWT
             signedJwt = googlePassJwt.generateSignedJwt();
 
@@ -236,24 +295,50 @@ public class Services {
         GenericJson objectResponse = null;
 
         try {
-            if (verticalType == VerticalType.OFFER) {
-                // get class definition
-                classResourcePayload = resourceDefinitions.makeOfferClassResource(classId);
-
-                // get object definition
-                objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId);
-
-                System.out.println("\nMaking REST call to insert class");
-                // make authorized REST call to explicitly insert class into Google server.
-                // if this is successful, you can check/update class definitions in Merchant Center GUI:
-                // https://pay.google.com/gp/m/issuer/list
-                classResponse = restMethods.insertOfferClass((OfferClass)classResourcePayload);
-
-                // check if object ID exists
-                objectResponse = restMethods.getOfferObject(objectId); // if it is a new objectId, expected status is 409
-
-            } else {
-                throw new Exception(String.format("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", verticalType));
+            // get class, object definitions, insert class (check in Merchant center GUI: https://pay.google.com/gp/m/issuer/list)
+            switch (verticalType){
+                case OFFER:
+                    classResourcePayload = resourceDefinitions.makeOfferClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertOfferClass((OfferClass)classResourcePayload);
+                    objectResponse = restMethods.getOfferObject(objectId); // if it is a new objectId, expected status is 409
+                    break;
+                case EVENTTICKET:
+                    classResourcePayload = resourceDefinitions.makeEventTicketClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeEventTicketObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertEventTicketClass((EventTicketClass)classResourcePayload);
+                    objectResponse = restMethods.getEventTicketObject(objectId); // if it is a new objectId, expected status is 409
+                    break;
+                case FLIGHT:
+                    classResourcePayload = resourceDefinitions.makeFlightClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeFlightObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertFlightClass((FlightClass)classResourcePayload);
+                    objectResponse = restMethods.getFlightObject(objectId); // if it is a new objectId, expected status is 409
+                    break;
+                case GIFTCARD:
+                    classResourcePayload = resourceDefinitions.makeGiftCardClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeGiftCardObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertGiftCardClass((GiftCardClass)classResourcePayload);
+                    objectResponse = restMethods.getGiftCardObject(objectId); // if it is a new objectId, expected status is 409
+                    break;
+                case LOYALTY:
+                    classResourcePayload = resourceDefinitions.makeLoyaltyClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeLoyaltyObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertLoyaltyClass((LoyaltyClass)classResourcePayload);
+                    objectResponse = restMethods.getLoyaltyObject(objectId); // if it is a new objectId, expected status is 409
+                    break;
+                case TRANSIT:
+                    classResourcePayload = resourceDefinitions.makeTransitClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeTransitObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertTransitClass((TransitClass)classResourcePayload);
+                    objectResponse = restMethods.getTransitObject(objectId); // if it is a new objectId, expected status is 409
+                    break;
             }
 
             // continue based on response status.Check https://developers.google.com/pay/passes/reference/v1/statuscodes
@@ -265,14 +350,32 @@ public class Services {
 
             // put into JSON Web Token (JWT) format for Google Pay API for Passes
             Jwt googlePassJwt = new Jwt();
-            if (verticalType == VerticalType.OFFER) {
-
-                Gson gson = new Gson(); // Use gson to change OfferClass/OfferObject instances into JSON representation
-                // only need to add object resource definition in JWT because class was pre -inserted
-                googlePassJwt.addOfferObject(gson.toJsonTree(objectResourcePayload));
-            } else {
-                throw new Exception(String.format("JWT format for %s is not implemented yet. For valid JWT formats, check %s"
-                        , verticalType, "https://developers.google.com/pay/passes/reference/s2w-reference//google-pay-api-for-passes-jwt"));
+            Gson gson = new Gson(); // Use gson to turn the class/object instances into JSON representation
+            switch (verticalType){
+                case OFFER:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addOfferObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case EVENTTICKET:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addEventTicketObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case FLIGHT:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addFlightObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case GIFTCARD:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addGiftcardObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case LOYALTY:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addLoyaltyObject(gson.toJsonTree(objectResourcePayload));
+                    break;
+                case TRANSIT:
+                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    googlePassJwt.addTransitObject(gson.toJsonTree(objectResourcePayload));
+                    break;
             }
 
             // sign JSON to make signed JWT
@@ -317,24 +420,50 @@ public class Services {
         GenericJson objectResponse = null;
 
         try {
-            if (verticalType == VerticalType.OFFER) {
-                // get class definition
-                classResourcePayload = resourceDefinitions.makeOfferClassResource(classId);
-
-                // get object definition
-                objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId);
-
-                System.out.println(String.format("\nMaking REST call to insert class: (%s)", classId));
-                // make authorized REST call to explicitly insert class into Google server.
-                // if this is successful, you can check/update class definitions in Merchant Center GUI:
-                // https://pay.google.com/gp/m/issuer/list
-                classResponse = restMethods.insertOfferClass((OfferClass) classResourcePayload);
-
-                System.out.println("\nMaking REST call to insert object");
-                // make authorized REST call to explicitly insert object into Google server.
-                objectResponse = restMethods.insertOfferObject((OfferObject) objectResourcePayload);
-            } else {
-                throw new Exception(String.format("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", verticalType));
+            // get class, object definitions, insert class and object (check class in Merchant center GUI: https://pay.google.com/gp/m/issuer/list)
+            switch (verticalType){
+                case OFFER:
+                    classResourcePayload = resourceDefinitions.makeOfferClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeOfferObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertOfferClass((OfferClass)classResourcePayload);
+                    objectResponse = restMethods.insertOfferObject((OfferObject)objectResourcePayload); 
+                    break;
+                case EVENTTICKET:
+                    classResourcePayload = resourceDefinitions.makeEventTicketClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeEventTicketObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertEventTicketClass((EventTicketClass)classResourcePayload);
+                    objectResponse = restMethods.insertEventTicketObject((EventTicketObject)objectResourcePayload); 
+                    break;
+                case FLIGHT:
+                    classResourcePayload = resourceDefinitions.makeFlightClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeFlightObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertFlightClass((FlightClass)classResourcePayload);
+                    objectResponse = restMethods.insertFlightObject((FlightObject)objectResourcePayload); 
+                    break;
+                case GIFTCARD:
+                    classResourcePayload = resourceDefinitions.makeGiftCardClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeGiftCardObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertGiftCardClass((GiftCardClass)classResourcePayload);
+                    objectResponse = restMethods.insertGiftCardObject((GiftCardObject)objectResourcePayload); 
+                    break;
+                case LOYALTY:
+                    classResourcePayload = resourceDefinitions.makeLoyaltyClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeLoyaltyObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertLoyaltyClass((LoyaltyClass)classResourcePayload);
+                    objectResponse = restMethods.insertLoyaltyObject((LoyaltyObject)objectResourcePayload); 
+                    break;
+                case TRANSIT:
+                    classResourcePayload = resourceDefinitions.makeTransitClassResource(classId);
+                    objectResourcePayload = resourceDefinitions.makeTransitObjectResource(classId, objectId);
+                    System.out.println("\nMaking REST call to insert class");
+                    classResponse = restMethods.insertTransitClass((TransitClass)classResourcePayload);
+                    objectResponse = restMethods.insertTransitObject((TransitObject)objectResourcePayload); 
+                    break;
             }
 
             // continue based on insert response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
@@ -346,17 +475,34 @@ public class Services {
 
             // put into JSON Web Token (JWT) format for Google Pay API for Passes
             Jwt googlePassJwt = new Jwt();
-            if (verticalType == VerticalType.OFFER) {
-
-                // only need to add objectId in JWT because class and object definitions were pre-inserted via REST call
-                JsonObject jwtPayload = new JsonObject();
-                jwtPayload.addProperty("id", objectId);
-                googlePassJwt.addOfferObject(jwtPayload);
-            } else {
-                throw new Exception(String.format("JWT format for %s is not implemented yet. For valid JWT formats, check %s"
-                        , verticalType, "https://developers.google.com/pay/passes/reference/s2w-reference//google-pay-api-for-passes-jwt"));
+            // only need to add objectId in JWT because class and object definitions were pre-inserted via REST call
+            JsonObject jwtPayload = new JsonObject();
+            switch (verticalType){
+                case OFFER:
+                    jwtPayload.addProperty("id", objectId);
+                    googlePassJwt.addOfferObject(jwtPayload);
+                    break;
+                case EVENTTICKET:
+                    jwtPayload.addProperty("id", objectId);
+                    googlePassJwt.addEventTicketObject(jwtPayload);
+                    break;
+                case FLIGHT:
+                    jwtPayload.addProperty("id", objectId);
+                    googlePassJwt.addFlightObject(jwtPayload);
+                    break;
+                case GIFTCARD:
+                    jwtPayload.addProperty("id", objectId);
+                    googlePassJwt.addGiftcardObject(jwtPayload);
+                    break;
+                case LOYALTY:
+                    jwtPayload.addProperty("id", objectId);
+                    googlePassJwt.addLoyaltyObject(jwtPayload);
+                    break;
+                case TRANSIT:
+                    jwtPayload.addProperty("id", objectId);
+                    googlePassJwt.addTransitObject(jwtPayload);
+                    break;
             }
-
             // sign JSON to make signed JWT
             signedJwt = googlePassJwt.generateSignedJwt();
 
