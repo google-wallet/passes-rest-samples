@@ -90,19 +90,19 @@ class GpapJwt {
     }
 
     public function addGiftcardClass($resourcePayload){
-        if( !array_key_exists("giftcardClasses", $this->payload) ){
-            $this->payload["giftcardClasses"] = array();
+        if( !array_key_exists("giftCardClasses", $this->payload) ){
+            $this->payload["giftCardClasses"] = array();
         }
-        $this->payload["giftcardClasses"][] = $resourcePayload;
+        $this->payload["giftCardClasses"][] = $resourcePayload;
 
         return;
     }
 
     public function addGiftcardObject($resourcePayload){
-        if( !array_key_exists("giftcardObjects", $this->payload) ){
-            $this->payload["giftcardObjects"][] = array();
+        if( !array_key_exists("giftCardObjects", $this->payload) ){
+            $this->payload["giftCardObjects"]= array();
         }
-        $this->payload["giftcardObjects"][] = $resourcePayload;
+        $this->payload["giftCardObjects"][] = $resourcePayload;
 
         return;
     }
@@ -139,6 +139,24 @@ class GpapJwt {
             $this->payload["flightObjects"] = array();
         }
         $this->payload["flightObjects"][] = $resourcePayload;
+
+        return;
+    }
+
+    public function addTransitClass($resourcePayload){
+        if( !array_key_exists("transitClasses", $this->payload) ){
+            $this->payload["transitClasses"] = array();
+        }
+        $this->payload["transitClasses"][] = $resourcePayload;
+
+        return;
+    }
+
+    public function addTransitObject($resourcePayload){
+        if( !array_key_exists("transitObjects", $this->payload) ){
+            $this->payload["transitObjects"] = array();
+        }
+        $this->payload["transitObjects"][] = $resourcePayload;
 
         return;
     }

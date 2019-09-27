@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2019 Google Inc.
+ * Copyright 2010 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -54,7 +54,7 @@ class Google_Service_Walletobjects extends Google_Service
   public $smarttap;
   public $transitclass;
   public $transitobject;
-
+  
 
   /**
    * Constructs the internal representation of the Walletobjects service.
@@ -108,13 +108,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -180,13 +180,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -252,13 +252,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -324,13 +324,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -382,14 +382,6 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'approvedOnly' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'version' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
               ),
             ),'insert' => array(
               'path' => 'giftCardClass',
@@ -404,13 +396,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -476,13 +468,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -596,14 +588,6 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'approvedOnly' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'version' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
               ),
             ),'insert' => array(
               'path' => 'loyaltyClass',
@@ -618,13 +602,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -690,13 +674,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'modifylinkedofferobjects' => array(
@@ -758,14 +742,6 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'approvedOnly' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'version' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
               ),
             ),'insert' => array(
               'path' => 'offerClass',
@@ -780,13 +756,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -852,13 +828,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -964,14 +940,6 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'approvedOnly' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'version' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
               ),
             ),'insert' => array(
               'path' => 'transitClass',
@@ -986,13 +954,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -1058,13 +1026,13 @@ class Google_Service_Walletobjects extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'token' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'patch' => array(
@@ -1167,13 +1135,13 @@ class Google_Service_Walletobjects_Eventticketclass_Resource extends Google_Serv
    * @param string $issuerId The ID of the issuer authorized to list classes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults classes are available in a list. For
    * example, if you have a list of 200 classes and you call list with maxResults
    * set to 20, list will return the first 20 classes and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 classes.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_EventTicketClassListResponse
    */
   public function listEventticketclass($issuerId, $optParams = array())
@@ -1300,13 +1268,13 @@ class Google_Service_Walletobjects_Eventticketobject_Resource extends Google_Ser
    * only include alphanumeric characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults objects are available in a list. For
    * example, if you have a list of 200 objects and you call list with maxResults
    * set to 20, list will return the first 20 objects and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 objects.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_EventTicketObjectListResponse
    */
   public function listEventticketobject($classId, $optParams = array())
@@ -1428,13 +1396,13 @@ class Google_Service_Walletobjects_Flightclass_Resource extends Google_Service_R
    * @param string $issuerId The ID of the issuer authorized to list classes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults classes are available in a list. For
    * example, if you have a list of 200 classes and you call list with maxResults
    * set to 20, list will return the first 20 classes and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 classes.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_FlightClassListResponse
    */
   public function listFlightclass($issuerId, $optParams = array())
@@ -1560,13 +1528,13 @@ class Google_Service_Walletobjects_Flightobject_Resource extends Google_Service_
    * only include alphanumeric characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults objects are available in a list. For
    * example, if you have a list of 200 objects and you call list with maxResults
    * set to 20, list will return the first 20 objects and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 objects.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_FlightObjectListResponse
    */
   public function listFlightobject($classId, $optParams = array())
@@ -1657,9 +1625,6 @@ class Google_Service_Walletobjects_Giftcardclass_Resource extends Google_Service
    * chosen by you. Your unique identifier should only include alphanumeric
    * characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param bool approvedOnly Deprecated
-   * @opt_param string version Deprecated
    * @return Google_Service_Walletobjects_GiftCardClass
    */
   public function get($resourceId, $optParams = array())
@@ -1691,13 +1656,13 @@ class Google_Service_Walletobjects_Giftcardclass_Resource extends Google_Service
    * @param string $issuerId The ID of the issuer authorized to list classes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults classes are available in a list. For
    * example, if you have a list of 200 classes and you call list with maxResults
    * set to 20, list will return the first 20 classes and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 classes.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_GiftCardClassListResponse
    */
   public function listGiftcardclass($issuerId, $optParams = array())
@@ -1823,13 +1788,13 @@ class Google_Service_Walletobjects_Giftcardobject_Resource extends Google_Servic
    * only include alphanumeric characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults objects are available in a list. For
    * example, if you have a list of 200 objects and you call list with maxResults
    * set to 20, list will return the first 20 objects and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 objects.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_GiftCardObjectListResponse
    */
   public function listGiftcardobject($classId, $optParams = array())
@@ -2034,9 +1999,6 @@ class Google_Service_Walletobjects_Loyaltyclass_Resource extends Google_Service_
    * chosen by you. Your unique identifier should only include alphanumeric
    * characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param bool approvedOnly Deprecated
-   * @opt_param string version Deprecated
    * @return Google_Service_Walletobjects_LoyaltyClass
    */
   public function get($resourceId, $optParams = array())
@@ -2068,13 +2030,13 @@ class Google_Service_Walletobjects_Loyaltyclass_Resource extends Google_Service_
    * @param string $issuerId The ID of the issuer authorized to list classes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults classes are available in a list. For
    * example, if you have a list of 200 classes and you call list with maxResults
    * set to 20, list will return the first 20 classes and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 classes.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_LoyaltyClassListResponse
    */
   public function listLoyaltyclass($issuerId, $optParams = array())
@@ -2200,13 +2162,13 @@ class Google_Service_Walletobjects_Loyaltyobject_Resource extends Google_Service
    * only include alphanumeric characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults objects are available in a list. For
    * example, if you have a list of 200 objects and you call list with maxResults
    * set to 20, list will return the first 20 objects and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 objects.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_LoyaltyObjectListResponse
    */
   public function listLoyaltyobject($classId, $optParams = array())
@@ -2317,9 +2279,6 @@ class Google_Service_Walletobjects_Offerclass_Resource extends Google_Service_Re
    * chosen by you. Your unique identifier should only include alphanumeric
    * characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param bool approvedOnly Deprecated
-   * @opt_param string version Deprecated
    * @return Google_Service_Walletobjects_OfferClass
    */
   public function get($resourceId, $optParams = array())
@@ -2350,13 +2309,13 @@ class Google_Service_Walletobjects_Offerclass_Resource extends Google_Service_Re
    * @param string $issuerId The ID of the issuer authorized to list classes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults classes are available in a list. For
    * example, if you have a list of 200 classes and you call list with maxResults
    * set to 20, list will return the first 20 classes and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 classes.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_OfferClassListResponse
    */
   public function listOfferclass($issuerId, $optParams = array())
@@ -2481,13 +2440,13 @@ class Google_Service_Walletobjects_Offerobject_Resource extends Google_Service_R
    * only include alphanumeric characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults objects are available in a list. For
    * example, if you have a list of 200 objects and you call list with maxResults
    * set to 20, list will return the first 20 objects and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 objects.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_OfferObjectListResponse
    */
   public function listOfferobject($classId, $optParams = array())
@@ -2666,9 +2625,6 @@ class Google_Service_Walletobjects_Transitclass_Resource extends Google_Service_
    * chosen by you. Your unique identifier should only include alphanumeric
    * characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param bool approvedOnly Deprecated
-   * @opt_param string version Deprecated
    * @return Google_Service_Walletobjects_TransitClass
    */
   public function get($resourceId, $optParams = array())
@@ -2700,13 +2656,13 @@ class Google_Service_Walletobjects_Transitclass_Resource extends Google_Service_
    * @param string $issuerId The ID of the issuer authorized to list classes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults classes are available in a list. For
    * example, if you have a list of 200 classes and you call list with maxResults
    * set to 20, list will return the first 20 classes and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 classes.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_TransitClassListResponse
    */
   public function listTransitclass($issuerId, $optParams = array())
@@ -2832,13 +2788,13 @@ class Google_Service_Walletobjects_Transitobject_Resource extends Google_Service
    * only include alphanumeric characters, '.', '_', or '-'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Identifies the max number of results returned by a
-   * list. All results are returned if maxResults isn't defined.
    * @opt_param string token Used to get the next set of results if maxResults is
    * specified, but more than maxResults objects are available in a list. For
    * example, if you have a list of 200 objects and you call list with maxResults
    * set to 20, list will return the first 20 objects and a token. Call list again
    * with maxResults set to 20 and the token to get the next 20 objects.
+   * @opt_param int maxResults Identifies the max number of results returned by a
+   * list. All results are returned if maxResults isn't defined.
    * @return Google_Service_Walletobjects_TransitObjectListResponse
    */
   public function listTransitobject($classId, $optParams = array())
@@ -3016,6 +2972,24 @@ class Google_Service_Walletobjects_Barcode extends Google_Model
   }
 }
 
+class Google_Service_Walletobjects_BarcodeSectionDetail extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $fieldSelectorType = 'Google_Service_Walletobjects_FieldSelector';
+  protected $fieldSelectorDataType = '';
+
+
+  public function setFieldSelector(Google_Service_Walletobjects_FieldSelector $fieldSelector)
+  {
+    $this->fieldSelector = $fieldSelector;
+  }
+  public function getFieldSelector()
+  {
+    return $this->fieldSelector;
+  }
+}
+
 class Google_Service_Walletobjects_BoardingAndSeatingInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
@@ -3132,6 +3106,233 @@ class Google_Service_Walletobjects_BoardingAndSeatingPolicy extends Google_Model
   }
 }
 
+class Google_Service_Walletobjects_CardBarcodeSectionDetails extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $firstBottomDetailType = 'Google_Service_Walletobjects_BarcodeSectionDetail';
+  protected $firstBottomDetailDataType = '';
+  protected $firstTopDetailType = 'Google_Service_Walletobjects_BarcodeSectionDetail';
+  protected $firstTopDetailDataType = '';
+  protected $secondTopDetailType = 'Google_Service_Walletobjects_BarcodeSectionDetail';
+  protected $secondTopDetailDataType = '';
+
+
+  public function setFirstBottomDetail(Google_Service_Walletobjects_BarcodeSectionDetail $firstBottomDetail)
+  {
+    $this->firstBottomDetail = $firstBottomDetail;
+  }
+  public function getFirstBottomDetail()
+  {
+    return $this->firstBottomDetail;
+  }
+  public function setFirstTopDetail(Google_Service_Walletobjects_BarcodeSectionDetail $firstTopDetail)
+  {
+    $this->firstTopDetail = $firstTopDetail;
+  }
+  public function getFirstTopDetail()
+  {
+    return $this->firstTopDetail;
+  }
+  public function setSecondTopDetail(Google_Service_Walletobjects_BarcodeSectionDetail $secondTopDetail)
+  {
+    $this->secondTopDetail = $secondTopDetail;
+  }
+  public function getSecondTopDetail()
+  {
+    return $this->secondTopDetail;
+  }
+}
+
+class Google_Service_Walletobjects_CardRowOneItem extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $itemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $itemDataType = '';
+
+
+  public function setItem(Google_Service_Walletobjects_TemplateItem $item)
+  {
+    $this->item = $item;
+  }
+  public function getItem()
+  {
+    return $this->item;
+  }
+}
+
+class Google_Service_Walletobjects_CardRowTemplateInfo extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $oneItemType = 'Google_Service_Walletobjects_CardRowOneItem';
+  protected $oneItemDataType = '';
+  protected $threeItemsType = 'Google_Service_Walletobjects_CardRowThreeItems';
+  protected $threeItemsDataType = '';
+  protected $twoItemsType = 'Google_Service_Walletobjects_CardRowTwoItems';
+  protected $twoItemsDataType = '';
+
+
+  public function setOneItem(Google_Service_Walletobjects_CardRowOneItem $oneItem)
+  {
+    $this->oneItem = $oneItem;
+  }
+  public function getOneItem()
+  {
+    return $this->oneItem;
+  }
+  public function setThreeItems(Google_Service_Walletobjects_CardRowThreeItems $threeItems)
+  {
+    $this->threeItems = $threeItems;
+  }
+  public function getThreeItems()
+  {
+    return $this->threeItems;
+  }
+  public function setTwoItems(Google_Service_Walletobjects_CardRowTwoItems $twoItems)
+  {
+    $this->twoItems = $twoItems;
+  }
+  public function getTwoItems()
+  {
+    return $this->twoItems;
+  }
+}
+
+class Google_Service_Walletobjects_CardRowThreeItems extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $endItemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $endItemDataType = '';
+  protected $middleItemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $middleItemDataType = '';
+  protected $startItemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $startItemDataType = '';
+
+
+  public function setEndItem(Google_Service_Walletobjects_TemplateItem $endItem)
+  {
+    $this->endItem = $endItem;
+  }
+  public function getEndItem()
+  {
+    return $this->endItem;
+  }
+  public function setMiddleItem(Google_Service_Walletobjects_TemplateItem $middleItem)
+  {
+    $this->middleItem = $middleItem;
+  }
+  public function getMiddleItem()
+  {
+    return $this->middleItem;
+  }
+  public function setStartItem(Google_Service_Walletobjects_TemplateItem $startItem)
+  {
+    $this->startItem = $startItem;
+  }
+  public function getStartItem()
+  {
+    return $this->startItem;
+  }
+}
+
+class Google_Service_Walletobjects_CardRowTwoItems extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $endItemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $endItemDataType = '';
+  protected $startItemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $startItemDataType = '';
+
+
+  public function setEndItem(Google_Service_Walletobjects_TemplateItem $endItem)
+  {
+    $this->endItem = $endItem;
+  }
+  public function getEndItem()
+  {
+    return $this->endItem;
+  }
+  public function setStartItem(Google_Service_Walletobjects_TemplateItem $startItem)
+  {
+    $this->startItem = $startItem;
+  }
+  public function getStartItem()
+  {
+    return $this->startItem;
+  }
+}
+
+class Google_Service_Walletobjects_CardTemplateOverride extends Google_Collection
+{
+  protected $collection_key = 'cardRowTemplateInfos';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $cardRowTemplateInfosType = 'Google_Service_Walletobjects_CardRowTemplateInfo';
+  protected $cardRowTemplateInfosDataType = 'array';
+
+
+  public function setCardRowTemplateInfos($cardRowTemplateInfos)
+  {
+    $this->cardRowTemplateInfos = $cardRowTemplateInfos;
+  }
+  public function getCardRowTemplateInfos()
+  {
+    return $this->cardRowTemplateInfos;
+  }
+}
+
+class Google_Service_Walletobjects_ClassTemplateInfo extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $cardBarcodeSectionDetailsType = 'Google_Service_Walletobjects_CardBarcodeSectionDetails';
+  protected $cardBarcodeSectionDetailsDataType = '';
+  protected $cardTemplateOverrideType = 'Google_Service_Walletobjects_CardTemplateOverride';
+  protected $cardTemplateOverrideDataType = '';
+  protected $detailsTemplateOverrideType = 'Google_Service_Walletobjects_DetailsTemplateOverride';
+  protected $detailsTemplateOverrideDataType = '';
+  protected $listTemplateOverrideType = 'Google_Service_Walletobjects_ListTemplateOverride';
+  protected $listTemplateOverrideDataType = '';
+
+
+  public function setCardBarcodeSectionDetails(Google_Service_Walletobjects_CardBarcodeSectionDetails $cardBarcodeSectionDetails)
+  {
+    $this->cardBarcodeSectionDetails = $cardBarcodeSectionDetails;
+  }
+  public function getCardBarcodeSectionDetails()
+  {
+    return $this->cardBarcodeSectionDetails;
+  }
+  public function setCardTemplateOverride(Google_Service_Walletobjects_CardTemplateOverride $cardTemplateOverride)
+  {
+    $this->cardTemplateOverride = $cardTemplateOverride;
+  }
+  public function getCardTemplateOverride()
+  {
+    return $this->cardTemplateOverride;
+  }
+  public function setDetailsTemplateOverride(Google_Service_Walletobjects_DetailsTemplateOverride $detailsTemplateOverride)
+  {
+    $this->detailsTemplateOverride = $detailsTemplateOverride;
+  }
+  public function getDetailsTemplateOverride()
+  {
+    return $this->detailsTemplateOverride;
+  }
+  public function setListTemplateOverride(Google_Service_Walletobjects_ListTemplateOverride $listTemplateOverride)
+  {
+    $this->listTemplateOverride = $listTemplateOverride;
+  }
+  public function getListTemplateOverride()
+  {
+    return $this->listTemplateOverride;
+  }
+}
+
 class Google_Service_Walletobjects_CommonWalletObjectClassCallbackOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
@@ -3180,6 +3381,43 @@ class Google_Service_Walletobjects_DateTime extends Google_Model
   public function getDate()
   {
     return $this->date;
+  }
+}
+
+class Google_Service_Walletobjects_DetailsItemInfo extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $itemType = 'Google_Service_Walletobjects_TemplateItem';
+  protected $itemDataType = '';
+
+
+  public function setItem(Google_Service_Walletobjects_TemplateItem $item)
+  {
+    $this->item = $item;
+  }
+  public function getItem()
+  {
+    return $this->item;
+  }
+}
+
+class Google_Service_Walletobjects_DetailsTemplateOverride extends Google_Collection
+{
+  protected $collection_key = 'detailsItemInfos';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $detailsItemInfosType = 'Google_Service_Walletobjects_DetailsItemInfo';
+  protected $detailsItemInfosDataType = 'array';
+
+
+  public function setDetailsItemInfos($detailsItemInfos)
+  {
+    $this->detailsItemInfos = $detailsItemInfos;
+  }
+  public function getDetailsItemInfos()
+  {
+    return $this->detailsItemInfos;
   }
 }
 
@@ -3809,7 +4047,6 @@ class Google_Service_Walletobjects_EventTicketClassAddMessageRequest extends Goo
   );
   protected $messageType = 'Google_Service_Walletobjects_WalletObjectMessage';
   protected $messageDataType = '';
-  public $reviewStatus;
 
 
   public function setMessage(Google_Service_Walletobjects_WalletObjectMessage $message)
@@ -3819,14 +4056,6 @@ class Google_Service_Walletobjects_EventTicketClassAddMessageRequest extends Goo
   public function getMessage()
   {
     return $this->message;
-  }
-  public function setReviewStatus($reviewStatus)
-  {
-    $this->reviewStatus = $reviewStatus;
-  }
-  public function getReviewStatus()
-  {
-    return $this->reviewStatus;
   }
 }
 
@@ -4373,6 +4602,68 @@ class Google_Service_Walletobjects_FieldMask extends Google_Collection
   }
 }
 
+class Google_Service_Walletobjects_FieldReference extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $dateFormat;
+  public $fieldPath;
+
+
+  public function setDateFormat($dateFormat)
+  {
+    $this->dateFormat = $dateFormat;
+  }
+  public function getDateFormat()
+  {
+    return $this->dateFormat;
+  }
+  public function setFieldPath($fieldPath)
+  {
+    $this->fieldPath = $fieldPath;
+  }
+  public function getFieldPath()
+  {
+    return $this->fieldPath;
+  }
+}
+
+class Google_Service_Walletobjects_FieldSelector extends Google_Collection
+{
+  protected $collection_key = 'fields';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $fieldsType = 'Google_Service_Walletobjects_FieldReference';
+  protected $fieldsDataType = 'array';
+
+
+  public function setFields($fields)
+  {
+    $this->fields = $fields;
+  }
+  public function getFields()
+  {
+    return $this->fields;
+  }
+}
+
+class Google_Service_Walletobjects_FirstRowOption extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $transitOption;
+
+
+  public function setTransitOption($transitOption)
+  {
+    $this->transitOption = $transitOption;
+  }
+  public function getTransitOption()
+  {
+    return $this->transitOption;
+  }
+}
+
 class Google_Service_Walletobjects_FlightCarrier extends Google_Model
 {
   protected $internal_gapi_mappings = array(
@@ -4448,6 +4739,8 @@ class Google_Service_Walletobjects_FlightClass extends Google_Collection
   protected $boardingAndSeatingPolicyDataType = '';
   protected $callbackOptionsType = 'Google_Service_Walletobjects_CommonWalletObjectClassCallbackOptions';
   protected $callbackOptionsDataType = '';
+  protected $classTemplateInfoType = 'Google_Service_Walletobjects_ClassTemplateInfo';
+  protected $classTemplateInfoDataType = '';
   public $countryCode;
   protected $destinationType = 'Google_Service_Walletobjects_AirportInfo';
   protected $destinationDataType = '';
@@ -4518,6 +4811,14 @@ class Google_Service_Walletobjects_FlightClass extends Google_Collection
   public function getCallbackOptions()
   {
     return $this->callbackOptions;
+  }
+  public function setClassTemplateInfo(Google_Service_Walletobjects_ClassTemplateInfo $classTemplateInfo)
+  {
+    $this->classTemplateInfo = $classTemplateInfo;
+  }
+  public function getClassTemplateInfo()
+  {
+    return $this->classTemplateInfo;
   }
   public function setCountryCode($countryCode)
   {
@@ -4775,7 +5076,6 @@ class Google_Service_Walletobjects_FlightClassAddMessageRequest extends Google_M
   );
   protected $messageType = 'Google_Service_Walletobjects_WalletObjectMessage';
   protected $messageDataType = '';
-  public $reviewStatus;
 
 
   public function setMessage(Google_Service_Walletobjects_WalletObjectMessage $message)
@@ -4785,14 +5085,6 @@ class Google_Service_Walletobjects_FlightClassAddMessageRequest extends Google_M
   public function getMessage()
   {
     return $this->message;
-  }
-  public function setReviewStatus($reviewStatus)
-  {
-    $this->reviewStatus = $reviewStatus;
-  }
-  public function getReviewStatus()
-  {
-    return $this->reviewStatus;
   }
 }
 
@@ -5675,7 +5967,6 @@ class Google_Service_Walletobjects_GiftCardClassAddMessageRequest extends Google
   );
   protected $messageType = 'Google_Service_Walletobjects_WalletObjectMessage';
   protected $messageDataType = '';
-  public $reviewStatus;
 
 
   public function setMessage(Google_Service_Walletobjects_WalletObjectMessage $message)
@@ -5685,14 +5976,6 @@ class Google_Service_Walletobjects_GiftCardClassAddMessageRequest extends Google
   public function getMessage()
   {
     return $this->message;
-  }
-  public function setReviewStatus($reviewStatus)
-  {
-    $this->reviewStatus = $reviewStatus;
-  }
-  public function getReviewStatus()
-  {
-    return $this->reviewStatus;
   }
 }
 
@@ -6203,10 +6486,19 @@ class Google_Service_Walletobjects_ImageModuleData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
+  public $id;
   protected $mainImageType = 'Google_Service_Walletobjects_Image';
   protected $mainImageDataType = '';
 
 
+  public function setId($id)
+  {
+    $this->id = $id;
+  }
+  public function getId()
+  {
+    return $this->id;
+  }
   public function setMainImage(Google_Service_Walletobjects_Image $mainImage)
   {
     $this->mainImage = $mainImage;
@@ -6625,6 +6917,44 @@ class Google_Service_Walletobjects_LinksModuleData extends Google_Collection
   public function getUris()
   {
     return $this->uris;
+  }
+}
+
+class Google_Service_Walletobjects_ListTemplateOverride extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $firstRowOptionType = 'Google_Service_Walletobjects_FirstRowOption';
+  protected $firstRowOptionDataType = '';
+  protected $secondRowOptionType = 'Google_Service_Walletobjects_FieldSelector';
+  protected $secondRowOptionDataType = '';
+  protected $thirdRowOptionType = 'Google_Service_Walletobjects_FieldSelector';
+  protected $thirdRowOptionDataType = '';
+
+
+  public function setFirstRowOption(Google_Service_Walletobjects_FirstRowOption $firstRowOption)
+  {
+    $this->firstRowOption = $firstRowOption;
+  }
+  public function getFirstRowOption()
+  {
+    return $this->firstRowOption;
+  }
+  public function setSecondRowOption(Google_Service_Walletobjects_FieldSelector $secondRowOption)
+  {
+    $this->secondRowOption = $secondRowOption;
+  }
+  public function getSecondRowOption()
+  {
+    return $this->secondRowOption;
+  }
+  public function setThirdRowOption(Google_Service_Walletobjects_FieldSelector $thirdRowOption)
+  {
+    $this->thirdRowOption = $thirdRowOption;
+  }
+  public function getThirdRowOption()
+  {
+    return $this->thirdRowOption;
   }
 }
 
@@ -7053,7 +7383,6 @@ class Google_Service_Walletobjects_LoyaltyClassAddMessageRequest extends Google_
   );
   protected $messageType = 'Google_Service_Walletobjects_WalletObjectMessage';
   protected $messageDataType = '';
-  public $reviewStatus;
 
 
   public function setMessage(Google_Service_Walletobjects_WalletObjectMessage $message)
@@ -7063,14 +7392,6 @@ class Google_Service_Walletobjects_LoyaltyClassAddMessageRequest extends Google_
   public function getMessage()
   {
     return $this->message;
-  }
-  public function setReviewStatus($reviewStatus)
-  {
-    $this->reviewStatus = $reviewStatus;
-  }
-  public function getReviewStatus()
-  {
-    return $this->reviewStatus;
   }
 }
 
@@ -8052,7 +8373,6 @@ class Google_Service_Walletobjects_OfferClassAddMessageRequest extends Google_Mo
   );
   protected $messageType = 'Google_Service_Walletobjects_WalletObjectMessage';
   protected $messageDataType = '';
-  public $reviewStatus;
 
 
   public function setMessage(Google_Service_Walletobjects_WalletObjectMessage $message)
@@ -8062,14 +8382,6 @@ class Google_Service_Walletobjects_OfferClassAddMessageRequest extends Google_Mo
   public function getMessage()
   {
     return $this->message;
-  }
-  public function setReviewStatus($reviewStatus)
-  {
-    $this->reviewStatus = $reviewStatus;
-  }
-  public function getReviewStatus()
-  {
-    return $this->reviewStatus;
   }
 }
 
@@ -8683,7 +8995,7 @@ class Google_Service_Walletobjects_ReservationInfo extends Google_Model
 
 class Google_Service_Walletobjects_Resources extends Google_Collection
 {
-  protected $collection_key = 'offerObjects';
+  protected $collection_key = 'transitObjects';
   protected $internal_gapi_mappings = array(
   );
   protected $eventTicketClassesType = 'Google_Service_Walletobjects_EventTicketClass';
@@ -8706,6 +9018,10 @@ class Google_Service_Walletobjects_Resources extends Google_Collection
   protected $offerClassesDataType = 'array';
   protected $offerObjectsType = 'Google_Service_Walletobjects_OfferObject';
   protected $offerObjectsDataType = 'array';
+  protected $transitClassesType = 'Google_Service_Walletobjects_TransitClass';
+  protected $transitClassesDataType = 'array';
+  protected $transitObjectsType = 'Google_Service_Walletobjects_TransitObject';
+  protected $transitObjectsDataType = 'array';
 
 
   public function setEventTicketClasses($eventTicketClasses)
@@ -8787,6 +9103,22 @@ class Google_Service_Walletobjects_Resources extends Google_Collection
   public function getOfferObjects()
   {
     return $this->offerObjects;
+  }
+  public function setTransitClasses($transitClasses)
+  {
+    $this->transitClasses = $transitClasses;
+  }
+  public function getTransitClasses()
+  {
+    return $this->transitClasses;
+  }
+  public function setTransitObjects($transitObjects)
+  {
+    $this->transitObjects = $transitObjects;
+  }
+  public function getTransitObjects()
+  {
+    return $this->transitObjects;
   }
 }
 
@@ -8881,12 +9213,50 @@ class Google_Service_Walletobjects_SmartTapMerchantData extends Google_Collectio
   }
 }
 
+class Google_Service_Walletobjects_TemplateItem extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $firstValueType = 'Google_Service_Walletobjects_FieldSelector';
+  protected $firstValueDataType = '';
+  public $predefinedItem;
+  protected $secondValueType = 'Google_Service_Walletobjects_FieldSelector';
+  protected $secondValueDataType = '';
+
+
+  public function setFirstValue(Google_Service_Walletobjects_FieldSelector $firstValue)
+  {
+    $this->firstValue = $firstValue;
+  }
+  public function getFirstValue()
+  {
+    return $this->firstValue;
+  }
+  public function setPredefinedItem($predefinedItem)
+  {
+    $this->predefinedItem = $predefinedItem;
+  }
+  public function getPredefinedItem()
+  {
+    return $this->predefinedItem;
+  }
+  public function setSecondValue(Google_Service_Walletobjects_FieldSelector $secondValue)
+  {
+    $this->secondValue = $secondValue;
+  }
+  public function getSecondValue()
+  {
+    return $this->secondValue;
+  }
+}
+
 class Google_Service_Walletobjects_TextModuleData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $body;
   public $header;
+  public $id;
   protected $localizedBodyType = 'Google_Service_Walletobjects_LocalizedString';
   protected $localizedBodyDataType = '';
   protected $localizedHeaderType = 'Google_Service_Walletobjects_LocalizedString';
@@ -8908,6 +9278,14 @@ class Google_Service_Walletobjects_TextModuleData extends Google_Model
   public function getHeader()
   {
     return $this->header;
+  }
+  public function setId($id)
+  {
+    $this->id = $id;
+  }
+  public function getId()
+  {
+    return $this->id;
   }
   public function setLocalizedBody(Google_Service_Walletobjects_LocalizedString $localizedBody)
   {
@@ -8965,8 +9343,9 @@ class Google_Service_Walletobjects_TicketCost extends Google_Model
   }
 }
 
-class Google_Service_Walletobjects_TicketLeg extends Google_Model
+class Google_Service_Walletobjects_TicketLeg extends Google_Collection
 {
+  protected $collection_key = 'ticketSeats';
   protected $internal_gapi_mappings = array(
   );
   public $arrivalDateTime;
@@ -8983,6 +9362,12 @@ class Google_Service_Walletobjects_TicketLeg extends Google_Model
   public $platform;
   protected $ticketSeatType = 'Google_Service_Walletobjects_TicketSeat';
   protected $ticketSeatDataType = '';
+  protected $ticketSeatsType = 'Google_Service_Walletobjects_TicketSeat';
+  protected $ticketSeatsDataType = 'array';
+  protected $transitOperatorNameType = 'Google_Service_Walletobjects_LocalizedString';
+  protected $transitOperatorNameDataType = '';
+  protected $transitTerminusNameType = 'Google_Service_Walletobjects_LocalizedString';
+  protected $transitTerminusNameDataType = '';
   public $zone;
 
 
@@ -9065,6 +9450,30 @@ class Google_Service_Walletobjects_TicketLeg extends Google_Model
   public function getTicketSeat()
   {
     return $this->ticketSeat;
+  }
+  public function setTicketSeats($ticketSeats)
+  {
+    $this->ticketSeats = $ticketSeats;
+  }
+  public function getTicketSeats()
+  {
+    return $this->ticketSeats;
+  }
+  public function setTransitOperatorName(Google_Service_Walletobjects_LocalizedString $transitOperatorName)
+  {
+    $this->transitOperatorName = $transitOperatorName;
+  }
+  public function getTransitOperatorName()
+  {
+    return $this->transitOperatorName;
+  }
+  public function setTransitTerminusName(Google_Service_Walletobjects_LocalizedString $transitTerminusName)
+  {
+    $this->transitTerminusName = $transitTerminusName;
+  }
+  public function getTransitTerminusName()
+  {
+    return $this->transitTerminusName;
   }
   public function setZone($zone)
   {
@@ -9212,12 +9621,11 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   protected $internal_gapi_mappings = array(
   );
   public $allowMultipleUsersPerObject;
-  public $antiScreenshotAnimation;
   protected $callbackOptionsType = 'Google_Service_Walletobjects_CommonWalletObjectClassCallbackOptions';
   protected $callbackOptionsDataType = '';
+  protected $classTemplateInfoType = 'Google_Service_Walletobjects_ClassTemplateInfo';
+  protected $classTemplateInfoDataType = '';
   public $countryCode;
-  protected $customArrivalDateLabelType = 'Google_Service_Walletobjects_LocalizedString';
-  protected $customArrivalDateLabelDataType = '';
   protected $customCarriageLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customCarriageLabelDataType = '';
   protected $customCoachLabelType = 'Google_Service_Walletobjects_LocalizedString';
@@ -9226,8 +9634,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   protected $customConcessionCategoryLabelDataType = '';
   protected $customConfirmationCodeLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customConfirmationCodeLabelDataType = '';
-  protected $customDepartureDateLabelType = 'Google_Service_Walletobjects_LocalizedString';
-  protected $customDepartureDateLabelDataType = '';
   protected $customDiscountMessageLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customDiscountMessageLabelDataType = '';
   protected $customFareClassLabelType = 'Google_Service_Walletobjects_LocalizedString';
@@ -9238,8 +9644,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   protected $customOtherRestrictionsLabelDataType = '';
   protected $customPlatformLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customPlatformLabelDataType = '';
-  protected $customPurchaseDateTimeLabelType = 'Google_Service_Walletobjects_LocalizedString';
-  protected $customPurchaseDateTimeLabelDataType = '';
   protected $customPurchaseFaceValueLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customPurchaseFaceValueLabelDataType = '';
   protected $customPurchasePriceLabelType = 'Google_Service_Walletobjects_LocalizedString';
@@ -9258,12 +9662,9 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   protected $customTimeRestrictionsLabelDataType = '';
   protected $customTransitTerminusNameLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customTransitTerminusNameLabelDataType = '';
-  protected $customValidityEndDateLabelType = 'Google_Service_Walletobjects_LocalizedString';
-  protected $customValidityEndDateLabelDataType = '';
-  protected $customValidityStartDateLabelType = 'Google_Service_Walletobjects_LocalizedString';
-  protected $customValidityStartDateLabelDataType = '';
   protected $customZoneLabelType = 'Google_Service_Walletobjects_LocalizedString';
   protected $customZoneLabelDataType = '';
+  public $enableSingleLegItinerary;
   public $enableSmartTap;
   protected $heroImageType = 'Google_Service_Walletobjects_Image';
   protected $heroImageDataType = '';
@@ -9276,9 +9677,9 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   protected $infoModuleDataType = 'Google_Service_Walletobjects_InfoModuleData';
   protected $infoModuleDataDataType = '';
   public $issuerName;
+  public $languageOverride;
   protected $linksModuleDataType = 'Google_Service_Walletobjects_LinksModuleData';
   protected $linksModuleDataDataType = '';
-  public $localeOverride;
   protected $localizedIssuerNameType = 'Google_Service_Walletobjects_LocalizedString';
   protected $localizedIssuerNameDataType = '';
   protected $locationsType = 'Google_Service_Walletobjects_LatLongPoint';
@@ -9296,8 +9697,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   protected $textModulesDataDataType = 'array';
   protected $transitOperatorNameType = 'Google_Service_Walletobjects_LocalizedString';
   protected $transitOperatorNameDataType = '';
-  protected $transitTerminusNameType = 'Google_Service_Walletobjects_LocalizedString';
-  protected $transitTerminusNameDataType = '';
   public $transitType;
   public $version;
   protected $watermarkType = 'Google_Service_Walletobjects_Image';
@@ -9314,14 +9713,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   {
     return $this->allowMultipleUsersPerObject;
   }
-  public function setAntiScreenshotAnimation($antiScreenshotAnimation)
-  {
-    $this->antiScreenshotAnimation = $antiScreenshotAnimation;
-  }
-  public function getAntiScreenshotAnimation()
-  {
-    return $this->antiScreenshotAnimation;
-  }
   public function setCallbackOptions(Google_Service_Walletobjects_CommonWalletObjectClassCallbackOptions $callbackOptions)
   {
     $this->callbackOptions = $callbackOptions;
@@ -9330,6 +9721,14 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   {
     return $this->callbackOptions;
   }
+  public function setClassTemplateInfo(Google_Service_Walletobjects_ClassTemplateInfo $classTemplateInfo)
+  {
+    $this->classTemplateInfo = $classTemplateInfo;
+  }
+  public function getClassTemplateInfo()
+  {
+    return $this->classTemplateInfo;
+  }
   public function setCountryCode($countryCode)
   {
     $this->countryCode = $countryCode;
@@ -9337,14 +9736,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   public function getCountryCode()
   {
     return $this->countryCode;
-  }
-  public function setCustomArrivalDateLabel(Google_Service_Walletobjects_LocalizedString $customArrivalDateLabel)
-  {
-    $this->customArrivalDateLabel = $customArrivalDateLabel;
-  }
-  public function getCustomArrivalDateLabel()
-  {
-    return $this->customArrivalDateLabel;
   }
   public function setCustomCarriageLabel(Google_Service_Walletobjects_LocalizedString $customCarriageLabel)
   {
@@ -9377,14 +9768,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   public function getCustomConfirmationCodeLabel()
   {
     return $this->customConfirmationCodeLabel;
-  }
-  public function setCustomDepartureDateLabel(Google_Service_Walletobjects_LocalizedString $customDepartureDateLabel)
-  {
-    $this->customDepartureDateLabel = $customDepartureDateLabel;
-  }
-  public function getCustomDepartureDateLabel()
-  {
-    return $this->customDepartureDateLabel;
   }
   public function setCustomDiscountMessageLabel(Google_Service_Walletobjects_LocalizedString $customDiscountMessageLabel)
   {
@@ -9425,14 +9808,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   public function getCustomPlatformLabel()
   {
     return $this->customPlatformLabel;
-  }
-  public function setCustomPurchaseDateTimeLabel(Google_Service_Walletobjects_LocalizedString $customPurchaseDateTimeLabel)
-  {
-    $this->customPurchaseDateTimeLabel = $customPurchaseDateTimeLabel;
-  }
-  public function getCustomPurchaseDateTimeLabel()
-  {
-    return $this->customPurchaseDateTimeLabel;
   }
   public function setCustomPurchaseFaceValueLabel(Google_Service_Walletobjects_LocalizedString $customPurchaseFaceValueLabel)
   {
@@ -9506,22 +9881,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   {
     return $this->customTransitTerminusNameLabel;
   }
-  public function setCustomValidityEndDateLabel(Google_Service_Walletobjects_LocalizedString $customValidityEndDateLabel)
-  {
-    $this->customValidityEndDateLabel = $customValidityEndDateLabel;
-  }
-  public function getCustomValidityEndDateLabel()
-  {
-    return $this->customValidityEndDateLabel;
-  }
-  public function setCustomValidityStartDateLabel(Google_Service_Walletobjects_LocalizedString $customValidityStartDateLabel)
-  {
-    $this->customValidityStartDateLabel = $customValidityStartDateLabel;
-  }
-  public function getCustomValidityStartDateLabel()
-  {
-    return $this->customValidityStartDateLabel;
-  }
   public function setCustomZoneLabel(Google_Service_Walletobjects_LocalizedString $customZoneLabel)
   {
     $this->customZoneLabel = $customZoneLabel;
@@ -9529,6 +9888,14 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   public function getCustomZoneLabel()
   {
     return $this->customZoneLabel;
+  }
+  public function setEnableSingleLegItinerary($enableSingleLegItinerary)
+  {
+    $this->enableSingleLegItinerary = $enableSingleLegItinerary;
+  }
+  public function getEnableSingleLegItinerary()
+  {
+    return $this->enableSingleLegItinerary;
   }
   public function setEnableSmartTap($enableSmartTap)
   {
@@ -9594,6 +9961,14 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   {
     return $this->issuerName;
   }
+  public function setLanguageOverride($languageOverride)
+  {
+    $this->languageOverride = $languageOverride;
+  }
+  public function getLanguageOverride()
+  {
+    return $this->languageOverride;
+  }
   public function setLinksModuleData(Google_Service_Walletobjects_LinksModuleData $linksModuleData)
   {
     $this->linksModuleData = $linksModuleData;
@@ -9601,14 +9976,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   public function getLinksModuleData()
   {
     return $this->linksModuleData;
-  }
-  public function setLocaleOverride($localeOverride)
-  {
-    $this->localeOverride = $localeOverride;
-  }
-  public function getLocaleOverride()
-  {
-    return $this->localeOverride;
   }
   public function setLocalizedIssuerName(Google_Service_Walletobjects_LocalizedString $localizedIssuerName)
   {
@@ -9690,14 +10057,6 @@ class Google_Service_Walletobjects_TransitClass extends Google_Collection
   {
     return $this->transitOperatorName;
   }
-  public function setTransitTerminusName(Google_Service_Walletobjects_LocalizedString $transitTerminusName)
-  {
-    $this->transitTerminusName = $transitTerminusName;
-  }
-  public function getTransitTerminusName()
-  {
-    return $this->transitTerminusName;
-  }
   public function setTransitType($transitType)
   {
     $this->transitType = $transitType;
@@ -9738,7 +10097,6 @@ class Google_Service_Walletobjects_TransitClassAddMessageRequest extends Google_
   );
   protected $messageType = 'Google_Service_Walletobjects_WalletObjectMessage';
   protected $messageDataType = '';
-  public $reviewStatus;
 
 
   public function setMessage(Google_Service_Walletobjects_WalletObjectMessage $message)
@@ -9748,14 +10106,6 @@ class Google_Service_Walletobjects_TransitClassAddMessageRequest extends Google_
   public function getMessage()
   {
     return $this->message;
-  }
-  public function setReviewStatus($reviewStatus)
-  {
-    $this->reviewStatus = $reviewStatus;
-  }
-  public function getReviewStatus()
-  {
-    return $this->reviewStatus;
   }
 }
 
@@ -9908,6 +10258,8 @@ class Google_Service_Walletobjects_TransitObject extends Google_Collection
   public $state;
   protected $textModulesDataType = 'Google_Service_Walletobjects_TextModuleData';
   protected $textModulesDataDataType = 'array';
+  protected $ticketLegType = 'Google_Service_Walletobjects_TicketLeg';
+  protected $ticketLegDataType = '';
   protected $ticketLegsType = 'Google_Service_Walletobjects_TicketLeg';
   protected $ticketLegsDataType = 'array';
   public $ticketNumber;
@@ -9915,6 +10267,7 @@ class Google_Service_Walletobjects_TransitObject extends Google_Collection
   protected $ticketRestrictionsDataType = '';
   public $ticketStatus;
   public $tripId;
+  public $tripType;
   protected $validTimeIntervalType = 'Google_Service_Walletobjects_TimeInterval';
   protected $validTimeIntervalDataType = '';
   public $version;
@@ -10096,6 +10449,14 @@ class Google_Service_Walletobjects_TransitObject extends Google_Collection
   {
     return $this->textModulesData;
   }
+  public function setTicketLeg(Google_Service_Walletobjects_TicketLeg $ticketLeg)
+  {
+    $this->ticketLeg = $ticketLeg;
+  }
+  public function getTicketLeg()
+  {
+    return $this->ticketLeg;
+  }
   public function setTicketLegs($ticketLegs)
   {
     $this->ticketLegs = $ticketLegs;
@@ -10135,6 +10496,14 @@ class Google_Service_Walletobjects_TransitObject extends Google_Collection
   public function getTripId()
   {
     return $this->tripId;
+  }
+  public function setTripType($tripType)
+  {
+    $this->tripType = $tripType;
+  }
+  public function getTripType()
+  {
+    return $this->tripType;
   }
   public function setValidTimeInterval(Google_Service_Walletobjects_TimeInterval $validTimeInterval)
   {
@@ -10323,6 +10692,7 @@ class Google_Service_Walletobjects_Uri extends Google_Model
   protected $internal_gapi_mappings = array(
   );
   public $description;
+  public $id;
   public $kind;
   protected $localizedDescriptionType = 'Google_Service_Walletobjects_LocalizedString';
   protected $localizedDescriptionDataType = '';
@@ -10336,6 +10706,14 @@ class Google_Service_Walletobjects_Uri extends Google_Model
   public function getDescription()
   {
     return $this->description;
+  }
+  public function setId($id)
+  {
+    $this->id = $id;
+  }
+  public function getId()
+  {
+    return $this->id;
   }
   public function setKind($kind)
   {

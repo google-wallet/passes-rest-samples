@@ -118,12 +118,12 @@ choice = ''
 while choice not in ['b', 'e', 'g', 'l', 'o', 't', 'q']: 
   choice = input(('\n\n*****************************\n'
                         'Which pass type would you like to demo?\n'
-                        'b - Boarding Passes\n'
-                        'e - Event Tickets\n'
-                        'g - Gift Cards\n'
+                        'b - Boarding Pass\n'
+                        'e - Event Ticket\n'
+                        'g - Gift Card\n'
                         'l - Loyalty\n'
-                        'o - Offers\n'
-                        't - Transit Passes\n'
+                        'o - Offer\n'
+                        't - Transit\n'
                         'q - Quit\n'
                         '\n\nEnter your choice:'))
   if choice == 'b':
@@ -149,7 +149,7 @@ classUid = str(verticalType).split('.')[1] + '_CLASS_'+ str(uuid.uuid4()) # CHAN
 # must be alphanumeric characters, '.', '_', or '-'.
 classId = '%s.%s' % (config.ISSUER_ID,classUid)
 
-# your objectUid should be a hash based off of pass metadata, for the demo we will use pass-type_class_uniqueid
+# your objectUid should be a hash based off of pass metadata, for the demo we will use pass-type_object_uniqueid
 objectUid = str(verticalType).split('.')[1] + '_OBJECT_'+ str(uuid.uuid4()) # CHANGEME
 # check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/).
 # Must be alphanumeric characters, '.', '_', or '-'.

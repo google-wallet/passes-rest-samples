@@ -119,7 +119,7 @@ public class Main {
         // must be alphanumeric characters, ".", "_", or "-".
         String classId = String.format("%s.%s" , config.getIssuerId(), classUid);
 
-        // your objectUid hould be a hash based off of pass metadata, for the demo we will use pass-type_class_uniqueid
+        // your objectUid hould be a hash based off of pass metadata, for the demo we will use pass-type_object_uniqueid
         String objectUid = String.format("%s_OBJECT_%s", verticalType.toString(), UUID.randomUUID().toString()); 
         
         // check Reference API for format of "id", for example offer:(https://developers.google.com/pay/passes/reference/v1/offerobject/insert).

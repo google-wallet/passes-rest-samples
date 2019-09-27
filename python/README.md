@@ -12,7 +12,7 @@ This sample showcases several aspects of the API
 The code for defining classes and objects can be found in the `resourceDefinitions.py`.
 
 ## Insertion of Classes and Objects
-Make server to server calls with the Google Pay API for Passes REST API. An authorized OAuth2.0 call is in `restMethods.py`. Preparation of the data and calling a REST API insert method is in `services.py`.
+Make server to server calls with the Google Pay API for Passes REST API. Authorized OAuth2.0 calls are in `restMethods.py`. Preparation of the data and calling REST API insert amd get methods are in `services.py`.
 
 ## Signing JSON Web Token (JWT)
 For users to save a Google pass, they need to click a save link or save button. To determine what pass is saved, the data is stored in a JSON Web Token (JWT). To make sure the JWT is valid, it is signed using RSA-SHA256. The signing key is the OAuth service account generated key. The JWT format and signing method is in `jwt.py`.
@@ -35,8 +35,8 @@ Read the output, you should see:
 1. The response of insertion of the Object.
 1. Variations of a signed JWT and link. For preparing a JWT, check `services.py`.
 
-## Modifying the sample passes
-Below is the example steps for modifying these sample passes:
+## Changing the design and information on the pass.
+Below is a procedure for modifying these sample passes:
 
 1. Edit the definition for the pass in `resourceDefinitions.py`
 	1. Check design and API reference according to the specific pass type:
@@ -58,7 +58,8 @@ Below is the example steps for modifying these sample passes:
 		* Transit - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/transit-passes/design)
 		| [Class](https://developers.google.com/pay/passes/reference/v1/transitclass/insert) 
 		| [Object](https://developers.google.com/pay/passes/reference/v1/transitobject/insert)
-	1. Run  the quickstart: `python main.py`.
-	1. Choose your pass type to demo in the program.
+1. Run  the quickstart: `python main.py`.
+1. Choose your pass type to demo in the program.
 
+## Updating a Pass
 In this quick start application, every demo run will have a unique class and object. If you want to change data of an already inserted class or object, as noted in our [use cases](https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/engage-through-google-pay), implement the update or patch methods. Check reference API [summary](https://developers.google.com/pay/passes/reference/v1/).
