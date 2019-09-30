@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-require_once 'Config.php'; // define constants
+require_once "Config.php"; // define constants
 
-require_once 'Services.php';
+require_once "Services.php";
 
-define('SAVE_LINK', "https://www.android.com/payapp/savetoandroidpay/"); // Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
+define("SAVE_LINK", "https://pay.google.com/gp/v/save/"); // Save link that uses JWT. See https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/save-to-google-pay#add-link-to-email
 
 
 
@@ -112,23 +112,61 @@ function demoSkinnyJwt($verticalType, $classId, $objectId){
 *
 *******************************/
 
-// your classUid should be a hash based off of pass metadata. here we hardcode
-$classUid = "my_class_id_01"; // CHANGEME
-// check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerclass/insert).
+$option = "z";
+$vertical = "OFFER";
+$verticalType = VerticalType::OFFER;
+while (strpos(" beglotq", $option) == false){
+    $option = readline("\n\n*****************************\n" .
+                        "Which pass type would you like to demo?\n" .
+                        "b - Boarding Pass\n" .
+                        "e - Event Ticket\n" .
+                        "g - Gift Card\n" .
+                        "l - Loyalty\n" .
+                        "o - Offer\n" .
+                        "t - Transit\n" .
+                        "q - Quit\n" .
+                        "\n\nEnter your choice:");
+    if ($option == "b"){
+        $verticalType = VerticalType::FLIGHT;
+        $vertical = "FLIGHT";
+    } elseif ($option == "e"){
+        $verticalType = VerticalType::EVENTTICKET;
+        $vertical = "EVENTTICKET";
+    } elseif ($option == "g"){
+        $verticalType = VerticalType::GIFTCARD;
+        $vertical = "GIFTCARD";
+    } elseif ($option == "l"){
+        $verticalType = VerticalType::LOYALTY;
+        $vertical = "LOYALTY";
+    } elseif ($option == "o"){
+        $verticalType = VerticalType::OFFER;
+        $vertical = "OFFER";
+    } elseif ($option == "t"){
+        $verticalType = VerticalType::TRANSIT;
+        $vertical = "TRANSIT";
+    } elseif ($option == "q"){
+        exit();
+    } else{
+        printf("\n* Invalid option - $option. Please select one of the pass types by entering it's related letter.\n");
+    }
+}
+// your classUid should be a hash based off of pass metadata, for the demo we will use pass-type_class_uniqueid
+$classUid = $vertical."_CLASS_".uniqid('', true); // CHANGEME
+
+// check Reference API for format of "id", offer example: (https://developers.google.com/pay/passes/reference/v1/offerclass/insert).
 // must be alphanumeric characters, ".", "_", or "-".
 $classId = sprintf("%s.%s" , ISSUER_ID, $classUid);
 
-// your objectUid should be a hash based off of pass metadata. Here we hardcode
-$objectUid = "my_object_Id_01"; // CHANGEME
-// check Reference API for format of "id" (https://developers.google.com/pay/passes/reference/v1/offerobject/insert).
+// your objectUid should be a hash based off of pass metadata, for the demo we will use pass-type_class_uniqueid
+$objectUid= $vertical."_OBJECT_".uniqid('', true); // CHANGEME
+
+// check Reference API for format of "id", offer example: (https://developers.google.com/pay/passes/reference/v1/offerobject/insert).
 // Must be alphanumeric characters, ".", "_", or "-".
 $objectId = sprintf("%s.%s", ISSUER_ID, $objectUid);
 
 // demonstrate the different "services" that make links/values for frontend to render a functional "save to phone" button
-$verticalType = VerticalType::OFFER;
 demoFatJwt($verticalType, $classId, $objectId);
 demoObjectJwt($verticalType, $classId, $objectId);
 demoSkinnyJwt($verticalType, $classId, $objectId);
-
 
 ?>

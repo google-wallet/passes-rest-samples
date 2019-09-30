@@ -12,7 +12,7 @@ This sample showcases several aspects of the API
 The code for defining classes and objects can be found in the `src/main/java/com/google/gpap/quickstart/ResourceDefinitions.java`.
 
 ## Insertion of Classes and Objects
-Make server to server calls with the Google Pay API for Passes REST API. An authorized OAuth2.0 call is in `src/main/java/com/google/gpap/quickstart/RestMethods.java`. Preparation of the data and calling a REST API insert method is in `src/main/java/com/google/gpap/quickstart/Services.java`.
+Make server to server calls with the Google Pay API for Passes REST API. Authorized OAuth2.0 calls are in `src/main/java/com/google/gpap/quickstart/RestMethods.java`. Preparation of the data and calling REST API insert and get methods are in `src/main/java/com/google/gpap/quickstart/Services.java`.
 
 ## Signing JSON Web Token (JWT)
 For users to save a Google pass, they need to click a save link or save button. To determine what pass is saved, the data is stored in a JSON Web Token (JWT). To make sure the JWT is valid, it is signed using RSA-SHA256. The signing key is the OAuth service account generated key. The JWT format and signing method is in `src/main/java/com/google/gpap/quickstart/Jwt.java`.
@@ -40,6 +40,30 @@ Read the output, you should see:
 1. The response of insertion of the pass Class.
 1. The response of insertion of the pass Object.
 1. Variations of a signed JWT and link. For preparing a JWT, check `src/main/java/com/google/gpap/quickstart/Services.java`.
+
+## Changing the design and information on the pass
+1. Edit the definition for the pass in `src/main/java/com/google/gpap/quickstart/ResourceDefinitions.java`
+	1. Check design and API reference according to the specific pass type:
+		* Boarding Passes - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/boarding-passes/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/flightclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/flightobject/insert)
+		* Event Tickets - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/event-tickets/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/eventticketclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/eventticketobject/insert)
+		* Gift Cards - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/gift-cards/design) 
+		| [Class](https://developers.google.com/pay/passes/reference/v1/giftcardclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/giftcardobject/insert)
+		* Loyalty - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/loyalty/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/loyaltyclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/loyaltyobject/insert)
+		* Offers - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/boarding-passes/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/offerclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/offerobject/insert)
+		* Transit - [Design](https://developers.google.com/pay/passes/guides/pass-verticals/transit-passes/design)
+		| [Class](https://developers.google.com/pay/passes/reference/v1/transitclass/insert) 
+		| [Object](https://developers.google.com/pay/passes/reference/v1/transitobject/insert)
+1. Run the quickstart: `./gradlew run`.
+1. Choose the modified pass type to demo.
 
 ## Updating a pass
 If you want to change data to inserted classes or objects, implement update() and patch(). Check reference API: [Summary](https://developers.google.com/pay/passes/reference/v1/)

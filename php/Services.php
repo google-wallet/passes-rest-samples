@@ -20,7 +20,7 @@ require_once 'vendor/autoload.php'; // Google api client (load with composer) ht
 *
 * 'Walletobjects.php'
 * contains the Google_service_.* definitions.
-* Is is the helper client library to implement REST definitions defined at:
+* It is the helper client library to implement REST definitions defined at:
 * https://developers.google.com/pay/passes/reference/v1/
 * Download newest at https://developers.google.com/pay/passes/support/libraries#libraries
 *
@@ -32,18 +32,17 @@ require_once 'GpapJwt.php';
 
 /*******************************
  *
- *  Quickstart only implements Offer vertical
  *
  *  See all the verticals: https://developers.google.com/pay/passes/guides/overview/basics/about-google-pay-api-for-passes
  *
  *******************************/
 abstract class VerticalType {
     const OFFER = 1;
-    // to be implemented
     const EVENTTICKET = 2;
     const FLIGHT = 3;         // also referred to as Boarding Passes
     const GIFTCARD = 4;
     const LOYALTY = 5;
+    const TRANSIT = 6;
 }
 /*******************************
  *
@@ -121,11 +120,18 @@ class Services {
             if ($idType == "object") {
                 $restMethods = RestMethods::getInstance();
                 $objectResponse = NULL;
-                if ($verticalType == VerticalType::OFFER) {
-                    // get object definition
+                if ($verticalType == VerticalType::OFFER){
                     $objectResponse = $restMethods->getOfferObject($id);
-                } else {
-                    throw new Exception(sprintf(">>>> Exception:\nresource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", $verticalType));
+                } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                    $objectResponse = $restMethods->getEventTicketObject($id);
+                } elseif ($verticalType == VerticalType::FLIGHT) {
+                    $objectResponse = $restMethods->getFlightObject($id);
+                } elseif ($verticalType == VerticalType::GIFTCARD) {
+                    $objectResponse = $restMethods->getGiftCardObject($id);
+                } elseif ($verticalType == VerticalType::LOYALTY) {
+                    $objectResponse = $restMethods->getLoyaltyObject($id);
+                } elseif ($verticalType == VerticalType::TRANSIT) {
+                    $objectResponse = $restMethods->getTransitObject($id);
                 }
                 // check if object's classId matches target classId
                 $classIdOfObjectId = $objectResponse["classReference"]["id"];
@@ -168,19 +174,38 @@ class Services {
         $restMethods = RestMethods::getInstance();
 
         try {
+            // get class and object definition as well as test if ids exist in backend
+            // for a Fat JWT, the first time a user hits the save button, the class and object are inserted
             if ($verticalType == VerticalType::OFFER) {
-                // get class definition
                 $classResourcePayload = ResourceDefinitions::makeOfferClassResource($classId);
-
-                // get object definition
                 $objectResourcePayload = ResourceDefinitions::makeOfferObjectResource($classId, $objectId);
-
-                // see if Ids exist in Google backend
-                //// for a Fat JWT, the first time a user hits the save button, the class and object are inserted
                 $classResponse = $restMethods->getOfferClass($classId);
                 $objectResponse = $restMethods->getOfferObject($objectId);
-            } else {
-                throw new Exception(sprintf("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", $verticalType));
+            } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                $classResourcePayload = ResourceDefinitions::makeEventTicketClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeEventTicketObjectResource($classId, $objectId);
+                $classResponse = $restMethods->getEventTicketClass($classId);
+                $objectResponse = $restMethods->getEventTicketObject($objectId);
+            } elseif ($verticalType == VerticalType::FLIGHT) {
+                $classResourcePayload = ResourceDefinitions::makeFlightClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeFlightObjectResource($classId, $objectId);
+                $classResponse = $restMethods->getFlightClass($classId);
+                $objectResponse = $restMethods->getFlightObject($objectId);
+            } elseif ($verticalType == VerticalType::GIFTCARD) {
+                $classResourcePayload = ResourceDefinitions::makeGiftCardClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeGiftCardObjectResource($classId, $objectId);
+                $classResponse = $restMethods->getGiftCardClass($classId);
+                $objectResponse = $restMethods->getGiftCardObject($objectId);
+            } elseif ($verticalType == VerticalType::LOYALTY) {
+                $classResourcePayload = ResourceDefinitions::makeLoyaltyClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeLoyaltyObjectResource($classId, $objectId);
+                $classResponse = $restMethods->getLoyaltyClass($classId);
+                $objectResponse = $restMethods->getLoyaltyObject($objectId);
+            } elseif ($verticalType == VerticalType::TRANSIT) {
+                $classResourcePayload = ResourceDefinitions::makeTransitClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeTransitObjectResource($classId, $objectId);
+                $classResponse = $restMethods->getTransitClass($classId);
+                $objectResponse = $restMethods->getTransitObject($objectId);
             }
 
             // check response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
@@ -192,15 +217,26 @@ class Services {
 
             // put into JSON Web Token (JWT) format for Google Pay API for Passes
             $googlePassJwt = new GpapJwt();
+            // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
             if ($verticalType == VerticalType::OFFER) {
-                // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
                 $googlePassJwt->addOfferClass($classResourcePayload);
                 $googlePassJwt->addOfferObject($objectResourcePayload);
-            } else {
-                throw new Exception(sprintf("JWT format for %s is not implemented yet. For valid JWT formats, check %s"
-                        , $verticalType, "https://developers.google.com/pay/passes/reference/s2w-reference//google-pay-api-for-passes-jwt"));
+            } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                $googlePassJwt->addEventTicketClass($classResourcePayload);
+                $googlePassJwt->addEventTicketObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::FLIGHT) {
+                $googlePassJwt->addFlightClass($classResourcePayload);
+                $googlePassJwt->addFlightObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::GIFTCARD) {
+                $googlePassJwt->addGiftCardClass($classResourcePayload);
+                $googlePassJwt->addGiftCardObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::LOYALTY) {
+                $googlePassJwt->addLoyaltyClass($classResourcePayload);
+                $googlePassJwt->addLoyaltyObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::TRANSIT) {
+                $googlePassJwt->addTransitClass($classResourcePayload);
+                $googlePassJwt->addTransitObject($objectResourcePayload);
             }
-
             // sign JSON to make signed JWT
             $signedJwt = $googlePassJwt->generateSignedJwt();
 
@@ -241,24 +277,40 @@ class Services {
         $restMethods = RestMethods::getInstance();
 
         try {
+            // get class and object definition as well as test if ids exist in backend
+            // make authorized REST call to explicitly insert class into Google server.
+            // if this is successful, you can check/update class definitions in Merchant Center GUI:
+            // https://pay.google.com/gp/m/issuer/list
             if ($verticalType == VerticalType::OFFER) {
-                // get class definition
                 $classResourcePayload = ResourceDefinitions::makeOfferClassResource($classId);
-
-                // get object definition
                 $objectResourcePayload = ResourceDefinitions::makeOfferObjectResource($classId, $objectId);
-
-                echo("\nMaking REST call to insert class");
-                // make authorized REST call to explicitly insert class into Google server.
-                // if this is successful, you can check/update class definitions in Merchant Center GUI:
-                // https://pay.google.com/gp/m/issuer/list
                 $classResponse = $restMethods->insertOfferClass($classResourcePayload);
-
-                // check if object ID exists
-                $objectResponse = $restMethods->getOfferObject($objectId); // if it is a new $objectId, expected status is 409
-
-            } else {
-                throw new Exception(sprintf("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", $verticalType));
+                $objectResponse = $restMethods->getOfferObject($objectId);
+            } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                $classResourcePayload = ResourceDefinitions::makeEventTicketClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeEventTicketObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertEventTicketClass($classResourcePayload);
+                $objectResponse = $restMethods->getEventTicketObject($objectId);
+            } elseif ($verticalType == VerticalType::FLIGHT) {
+                $classResourcePayload = ResourceDefinitions::makeFlightClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeFlightObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertFlightClass($classResourcePayload);
+                $objectResponse = $restMethods->getFlightObject($objectId);
+            } elseif ($verticalType == VerticalType::GIFTCARD) {
+                $classResourcePayload = ResourceDefinitions::makeGiftCardClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeGiftCardObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertGiftCardClass($classResourcePayload);
+                $objectResponse = $restMethods->getGiftCardObject($objectId);
+            } elseif ($verticalType == VerticalType::LOYALTY) {
+                $classResourcePayload = ResourceDefinitions::makeLoyaltyClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeLoyaltyObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertLoyaltyClass($classResourcePayload);
+                $objectResponse = $restMethods->getLoyaltyObject($objectId);
+            } elseif ($verticalType == VerticalType::TRANSIT) {
+                $classResourcePayload = ResourceDefinitions::makeTransitClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeTransitObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertTransitClass($classResourcePayload);
+                $objectResponse = $restMethods->getTransitObject($objectId);
             }
 
             // continue based on response status.Check https://developers.google.com/pay/passes/reference/v1/statuscodes
@@ -268,14 +320,20 @@ class Services {
             // check object get response. Will print out if object exists or not. Throws error if object resource is malformed, or if existing objectId's classId does not match the expected classId
             $this->handleGetCallStatusCode($objectResponse, "object", $objectId, $classId);
 
-            // put into JSON Web Token (JWT) format for Google Pay API for Passes
+            // only need to add object resource definition in JWT because class was pre -inserted
             $googlePassJwt = new GpapJwt();
             if ($verticalType == VerticalType::OFFER) {
-                // only need to add object resource definition in JWT because class was pre -inserted
                 $googlePassJwt->addOfferObject($objectResourcePayload);
-            } else {
-                throw new Exception(sprintf("JWT format for %s is not implemented yet. For valid JWT formats, check %s"
-                        , $verticalType, "https://developers.google.com/pay/passes/reference/s2w-reference//google-pay-api-for-passes-jwt"));
+            } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                $googlePassJwt->addEventTicketObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::FLIGHT) {
+                $googlePassJwt->addFlightObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::GIFTCARD) {
+                $googlePassJwt->addGiftCardObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::LOYALTY) {
+                $googlePassJwt->addLoyaltyObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::TRANSIT) {
+                $googlePassJwt->addTransitObject($objectResourcePayload);
             }
 
             // sign JSON to make signed JWT
@@ -319,24 +377,41 @@ class Services {
         $restMethods = RestMethods::getInstance();
 
         try {
+
+            // get class and object definition as well as test if ids exist in backend
+            // make authorized REST call to explicitly insert class and object into Google server.
+            // if this is successful, you can check/update class definitions in Merchant Center GUI:
+            // https://pay.google.com/gp/m/issuer/list
             if ($verticalType == VerticalType::OFFER) {
-                // get class definition
                 $classResourcePayload = ResourceDefinitions::makeOfferClassResource($classId);
-
-                printf("\nMaking REST call to insert class: (%s)", $classId);
-                // make authorized REST call to explicitly insert class into Google server.
-                // if this is successful, you can check/update class definitions in Merchant Center GUI:
-                // https://pay.google.com/gp/m/issuer/list
-                $classResponse = $restMethods->insertOfferClass($classResourcePayload);
-
-                // get object definition
                 $objectResourcePayload = ResourceDefinitions::makeOfferObjectResource($classId, $objectId);
-
-                echo("\nMaking REST call to insert object");
-                // make authorized REST call to explicitly insert object into Google server.
+                $classResponse = $restMethods->insertOfferClass($classResourcePayload);
                 $objectResponse = $restMethods->insertOfferObject($objectResourcePayload);
-            } else {
-                throw new Exception(sprintf("resource definition for vertical: (%s) not implemented yet. Check README.md > Implementing other verticals", $verticalType));
+            } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                $classResourcePayload = ResourceDefinitions::makeEventTicketClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeEventTicketObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertEventTicketClass($classResourcePayload);
+                $objectResponse = $restMethods->insertEventTicketObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::FLIGHT) {
+                $classResourcePayload = ResourceDefinitions::makeFlightClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeFlightObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertFlightClass($classResourcePayload);
+                $objectResponse = $restMethods->insertFlightObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::GIFTCARD) {
+                $classResourcePayload = ResourceDefinitions::makeGiftCardClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeGiftCardObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertGiftCardClass($classResourcePayload);
+                $objectResponse = $restMethods->insertGiftCardObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::LOYALTY) {
+                $classResourcePayload = ResourceDefinitions::makeLoyaltyClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeLoyaltyObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertLoyaltyClass($classResourcePayload);
+                $objectResponse = $restMethods->insertLoyaltyObject($objectResourcePayload);
+            } elseif ($verticalType == VerticalType::TRANSIT) {
+                $classResourcePayload = ResourceDefinitions::makeTransitClassResource($classId);
+                $objectResourcePayload = ResourceDefinitions::makeTransitObjectResource($classId, $objectId);
+                $classResponse = $restMethods->insertTransitClass($classResourcePayload);
+                $objectResponse = $restMethods->insertTransitObject($objectResourcePayload);
             }
 
             // continue based on insert response status. Check https://developers.google.com/pay/passes/reference/v1/statuscodes
@@ -347,15 +422,21 @@ class Services {
             $this->handleInsertCallStatusCode($objectResponse, "object", $objectId, $classId, $verticalType);
 
             // put into JSON Web Token (JWT) format for Google Pay API for Passes
+            // only need to add objectId in JWT because class and object were pre -inserted
             $googlePassJwt = new GpapJwt();
             if ($verticalType == VerticalType::OFFER) {
-                // only need to add $objectId in JWT because class and object definitions were pre-inserted via REST call
                 $googlePassJwt->addOfferObject(array("id" => $objectId));
-            } else {
-                throw new Exception(sprintf("JWT format for %s is not implemented yet. For valid JWT formats, check %s"
-                        , $verticalType, "https://developers.google.com/pay/passes/reference/s2w-reference//google-pay-api-for-passes-jwt"));
+            } elseif ($verticalType == VerticalType::EVENTTICKET) {
+                $googlePassJwt->addEventTicketObject(array("id" => $objectId));
+            } elseif ($verticalType == VerticalType::FLIGHT) {
+                $googlePassJwt->addFlightObject(array("id" => $objectId));
+            } elseif ($verticalType == VerticalType::GIFTCARD) {
+                $googlePassJwt->addGiftCardObject(array("id" => $objectId));
+            } elseif ($verticalType == VerticalType::LOYALTY) {
+                $googlePassJwt->addLoyaltyObject(array("id" => $objectId));
+            } elseif ($verticalType == VerticalType::TRANSIT) {
+                $googlePassJwt->addTransitObject(array("id" => $objectId));
             }
-
             // sign JSON to make signed JWT
             $signedJwt = $googlePassJwt->generateSignedJwt();
 
