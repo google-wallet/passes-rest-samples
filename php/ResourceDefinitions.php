@@ -703,7 +703,6 @@ class ResourceDefinitions {
 		$payload->setIssuerName("Baconrista Bus");
 		$payload->setReviewStatus("underReview");
 		$payload->setTransitType("bus");
-        // optional.  Check design and reference api to decide what's desirable
 		$payload->setLogo($titleImage);
 	    return $payload;
 	}
