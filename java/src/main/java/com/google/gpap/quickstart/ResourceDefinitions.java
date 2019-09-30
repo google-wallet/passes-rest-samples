@@ -564,7 +564,6 @@ public class ResourceDefinitions {
         TransitClass payload = new TransitClass()
                 // required
                 .setId(classId).setIssuerName("Baconrista Bus").setReviewStatus("underReview").setTransitType("bus")
-                // optional. Check design and reference api for more
                 .setLogo((new Image()).setSourceUri(
                         (new Uri()).setUri("https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png")
                                 .setDescription("Baconrista Bus")));

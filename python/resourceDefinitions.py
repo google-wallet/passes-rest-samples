@@ -780,7 +780,6 @@ def makeTransitClassResource(classId):
     ,"issuerName": "Baconrista Bus"
     ,"reviewStatus": "underReview"
     ,"transitType": "bus"
-    # optional
     ,"logo": {
         "kind": "walletobjects#image",
         "sourceUri": {
@@ -788,14 +787,14 @@ def makeTransitClassResource(classId):
             "uri": "https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png",
             "description": "super duper logo"
         }
-    },
+    }
   }
   return payload
 
 
 
 ###############################
-#
+# 
 # Define an Transit Pass Object
 #
 # See https://developers.google.com/pay/passes/reference/v1/transitobject
