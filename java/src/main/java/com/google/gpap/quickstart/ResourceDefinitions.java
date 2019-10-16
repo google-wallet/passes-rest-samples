@@ -478,7 +478,7 @@ public class ResourceDefinitions {
         //// https://developers.google.com/pay/passes/support/libraries#libraries
         FlightClass payload = new FlightClass()
                 // required
-                .setId(classId).setIssuerName("Baconrista Stadium").setReviewStatus("underReview")
+                .setId(classId).setIssuerName("Baconrista Flights").setReviewStatus("underReview")
                 .setOrigin((new AirportInfo()).setAirportIataCode("LAX").setGate("A2").setTerminal("1"))
                 .setDestination((new AirportInfo()).setAirportIataCode("SFO").setGate("C3").setTerminal("2"))
                 .setFlightHeader((new FlightHeader()).setCarrier((new FlightCarrier().setCarrierIataCode("LX")))
@@ -594,17 +594,17 @@ public class ResourceDefinitions {
         TransitObject payload = new TransitObject()
                 // required fields
                 .setClassId(classId).setId(objectId).setState("active").setTripType("oneWay")
-                // optional
-                .setBarcode((new Barcode()).setType("qrCode").setValue("1234abc")
-                        .setAlternateText("optional alternate text"))
-                .setPassengerType("singlePassenger").setPassengerNames("Sir Bacon the IV")
                 .setTicketLeg((new TicketLeg()).setOriginStationCode("LA")
-                        .setOriginName((new LocalizedString()).setDefaultValue(
-                                (new TranslatedString()).setLanguage("en-US").setValue("LA Transit Center")))
-                        .setDepartureDateTime("2020-04-12T16:20:50.52Z")
-                        .setArrivalDateTime("2020-04-12T20:20:50.52Z")
-                        .setDestinationStationCode("SFO").setDestinationName((new LocalizedString()).setDefaultValue(
-                                (new TranslatedString()).setLanguage("en-US").setValue("SFO Transit Center"))));
+                    .setOriginName((new LocalizedString()).setDefaultValue(
+                            (new TranslatedString()).setLanguage("en-US").setValue("LA Transit Center")))
+                    .setDepartureDateTime("2020-04-12T16:20:50.52Z")
+                    .setArrivalDateTime("2020-04-12T20:20:50.52Z")
+                    .setDestinationStationCode("SFO").setDestinationName((new LocalizedString()).setDefaultValue(
+                            (new TranslatedString()).setLanguage("en-US").setValue("SFO Transit Center"))))
+                // optional
+                .setPassengerType("singlePassenger").setPassengerNames("Sir Bacon the IV")
+                .setBarcode((new Barcode()).setType("qrCode").setValue("1234abc")
+                        .setAlternateText("optional alternate text"));
         return payload;
     }
 }

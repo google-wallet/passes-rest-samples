@@ -21,3 +21,5 @@ gradlew*
 php/vendor/
 installer
 composer*
+bin/
+obj/
