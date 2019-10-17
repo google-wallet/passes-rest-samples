@@ -353,27 +353,27 @@ public class Services {
             Gson gson = new Gson(); // Use gson to turn the class/object instances into JSON representation
             switch (verticalType){
                 case OFFER:
-                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    // need to add only object because class was pre-inserted
                     googlePassJwt.addOfferObject(gson.toJsonTree(objectResourcePayload));
                     break;
                 case EVENTTICKET:
-                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    // need to add only object because class was pre-inserted
                     googlePassJwt.addEventTicketObject(gson.toJsonTree(objectResourcePayload));
                     break;
                 case FLIGHT:
-                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    // need to add only object because class was pre-inserted
                     googlePassJwt.addFlightObject(gson.toJsonTree(objectResourcePayload));
                     break;
                 case GIFTCARD:
-                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    /// need to add only object because class was pre-inserted
                     googlePassJwt.addGiftcardObject(gson.toJsonTree(objectResourcePayload));
                     break;
                 case LOYALTY:
-                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    // need to add only object because class was pre-inserted
                     googlePassJwt.addLoyaltyObject(gson.toJsonTree(objectResourcePayload));
                     break;
                 case TRANSIT:
-                    // need to add both class and object resource definitions into JWT because no REST calls made to pre-insert
+                    // need to add only object because class was pre-inserted
                     googlePassJwt.addTransitObject(gson.toJsonTree(objectResourcePayload));
                     break;
             }

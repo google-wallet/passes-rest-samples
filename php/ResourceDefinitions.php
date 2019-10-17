@@ -311,7 +311,7 @@ class ResourceDefinitions {
 
 		$imageUri = new Google_Service_Walletobjects_Uri();
 		$imageUri->setUri("https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg");
-		$imageUri->setDescription("Baconrista stadium image");
+		$imageUri->setDescription("Baconrista flights image");
 		$image = new Google_Service_Walletobjects_Image();
 		$image->setSourceUri($imageUri); 
 		$imageModulesData = new Google_Service_Walletobjects_ImageModuleData();
@@ -542,7 +542,7 @@ class ResourceDefinitions {
 
 		$imageUri = new Google_Service_Walletobjects_Uri();
 		$imageUri->setUri("http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg");
-		$imageUri->setDescription("Baconrista stadium image");
+		$imageUri->setDescription("Baconrista Loyalty Image");
 		$image = new Google_Service_Walletobjects_Image();
 		$image->setSourceUri($imageUri); 
 		$imageModulesData = new Google_Service_Walletobjects_ImageModuleData();
