@@ -1,8 +1,3 @@
-
-
-// These handle formatting the JSON resource definitions
-// download the latest client at:  https://developers.google.com/pay/passes/support/libraries#libraries
-using System.Collections.Generic;
 /**
 * Copyright 2019 Google Inc. All Rights Reserved.
 *
@@ -18,6 +13,11 @@ using System.Collections.Generic;
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
+// These handle formatting the JSON resource definitions
+// download the latest client at:  https://developers.google.com/pay/passes/support/libraries#libraries
+using System.Collections.Generic;
+using csharp.Data;
 namespace csharp
 {
     public class ResourceDefinitions
@@ -64,7 +64,7 @@ namespace csharp
             //optional fields. See design and reference api for more
             payload.TitleImage = new Image()
             {
-                SourceUri = new Uri() { UriValue = "http://farm4.staticflickr.com/3723/11177041115_6e6a3b6f49_o.jpg" }
+                SourceUri = new ImageUri() { Uri = "http://farm4.staticflickr.com/3723/11177041115_6e6a3b6f49_o.jpg" }
             };
             return payload;
         }
@@ -123,7 +123,7 @@ namespace csharp
             payload.ProgramName = "Baconrista Rewards";
             payload.ProgramLogo = new Image()
             {
-                SourceUri = new Uri() { UriValue = "http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg" }
+                SourceUri = new ImageUri() { Uri = "http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg" }
             };
             payload.ReviewStatus = "underReview";
             //optional fields. See design and reference api for more
@@ -150,15 +150,15 @@ namespace csharp
             payload.ImageModulesData = new List<ImageModuleData>(){
                 new ImageModuleData(){
                     MainImage= new Image(){
-                        SourceUri = new Uri(){
-                            UriValue="http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg",
+                        SourceUri = new ImageUri(){
+                            Uri="http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg",
                             Description="Coffee beans"
                         }
                     }
                 }
             };
-            payload.Messages = new List<WalletObjectMessage>(){
-                new WalletObjectMessage(){
+            payload.Messages = new List<Message>(){
+                new Message(){
                     Header="Welcome to Banconrista Rewards!",
                     Body="Featuring our new bacon donuts."
                 }
@@ -258,8 +258,8 @@ namespace csharp
                 }
             };
             payload.InfoModuleData.ShowLastUpdateTime =true;
-            payload.Messages = new List<WalletObjectMessage>(){
-                new WalletObjectMessage(){
+            payload.Messages = new List<Message>(){
+                new Message(){
                     Header="Jane, welcome to Banconrista Rewards",
                     Body="Thanks for joining our program. Show this message to "
                         + "our barista for your first free coffee on us!"
@@ -317,7 +317,7 @@ namespace csharp
             payload.MerchantName = "Baconrista";
             payload.ProgramLogo = new Image()
             {
-                SourceUri = new Uri() { UriValue = "http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg" }
+                SourceUri = new ImageUri() { Uri = "http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg" }
             };
             payload.TextModulesData = new List<TextModuleData>(){
                 new TextModuleData(){
@@ -458,8 +458,8 @@ namespace csharp
             payload.ImageModulesData = new List<ImageModuleData>(){
                 new ImageModuleData(){
                     MainImage= new Image(){
-                        SourceUri = new Uri(){
-                            UriValue="http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg",
+                        SourceUri = new ImageUri(){
+                            Uri="http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg",
                             Description="Coffee beans"
                         }
                     }
@@ -467,7 +467,7 @@ namespace csharp
             };
             payload.Logo = new Image()
             {
-                SourceUri = new Uri() { UriValue = "https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg", Description="Baconrista stadium logo" }
+                SourceUri = new ImageUri() { Uri = "https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg", Description="Baconrista stadium logo" }
             };
             payload.Locations = new List<LatLongPoint>(){
                 new LatLongPoint(){
@@ -616,8 +616,8 @@ namespace csharp
             payload.ImageModulesData = new List<ImageModuleData>(){
                 new ImageModuleData(){
                     MainImage= new Image(){
-                        SourceUri = new Uri(){
-                            UriValue="http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg",
+                        SourceUri = new ImageUri(){
+                            Uri="http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg",
                             Description="Coffee beans"
                         }
                     }
@@ -688,7 +688,7 @@ namespace csharp
             payload.ReviewStatus = "underReview";
             payload.Logo = new Image()
             {
-                SourceUri = new Uri() { UriValue = "https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png", Description="Baconrista Bus"}
+                SourceUri = new ImageUri() { Uri = "https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png", Description="Baconrista Bus"}
             };
             payload.TransitType="bus";
             //optional fields. See design and reference api for more

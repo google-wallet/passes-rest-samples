@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import com.google.api.services.walletobjects.model.AirportInfo;
 import com.google.api.services.walletobjects.model.Barcode;
 import com.google.api.services.walletobjects.model.BoardingAndSeatingInfo;
-import com.google.api.services.walletobjects.model.CommonWalletObjectClassReview;
+import com.google.api.services.walletobjects.model.Review;
 import com.google.api.services.walletobjects.model.DateTime;
 import com.google.api.services.walletobjects.model.EventDateTime;
 import com.google.api.services.walletobjects.model.EventSeat;
@@ -46,6 +46,7 @@ import com.google.api.services.walletobjects.model.GiftCardClass;
 import com.google.api.services.walletobjects.model.GiftCardObject;
 import com.google.api.services.walletobjects.model.Image;
 import com.google.api.services.walletobjects.model.ImageModuleData;
+import com.google.api.services.walletobjects.model.ImageUri;
 import com.google.api.services.walletobjects.model.InfoModuleData;
 import com.google.api.services.walletobjects.model.LabelValue;
 import com.google.api.services.walletobjects.model.LabelValueRow;
@@ -58,7 +59,7 @@ import com.google.api.services.walletobjects.model.LoyaltyPoints;
 import com.google.api.services.walletobjects.model.LoyaltyPointsBalance;
 import com.google.api.services.walletobjects.model.Money;
 import com.google.api.services.walletobjects.model.Uri;
-import com.google.api.services.walletobjects.model.WalletObjectMessage;
+import com.google.api.services.walletobjects.model.Message;
 
 public class ResourceDefinitions {
     private static ResourceDefinitions resourceDefinitions = new ResourceDefinitions();
@@ -98,8 +99,7 @@ public class ResourceDefinitions {
                 .setId(classId).setIssuerName("Baconrista Coffee").setProvider("Baconrista Deals")
                 .setRedemptionChannel("online").setReviewStatus("underReview").setTitle("20% off one bacon fat latte")
                 // optional. Check design and reference api for more
-                .setTitleImage(new Image().setSourceUri(
-                        new Uri().setUri("http://farm4.staticflickr.com/3723/11177041115_6e6a3b6f49_o.jpg")));
+                .setTitleImage( (new Image()).setSourceUri((new ImageUri()).setUri("http://farm4.staticflickr.com/3723/11177041115_6e6a3b6f49_o.jpg")));
 
         return payload;
     }
@@ -159,7 +159,7 @@ public class ResourceDefinitions {
                 // required
                 .setId(classId).setIssuerName("Baconrista Coffee").setProgramName("Baconrista Rewards")
                 .setProgramLogo(new Image().setSourceUri(
-                        new Uri().setUri("http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg")))
+                        new ImageUri().setUri("http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg")))
                 .setReviewStatus("underReview")
                 // optional. Check design and reference api for more
                 .setTextModulesData((new ArrayList<TextModuleData>() {
@@ -176,12 +176,12 @@ public class ResourceDefinitions {
                 }))).setImageModulesData((new ArrayList<ImageModuleData>() {
                     {
                         add((new ImageModuleData())
-                                .setMainImage((new Image()).setSourceUri((new Uri()).setDescription("Coffee beans")
+                                .setMainImage((new Image()).setSourceUri((new ImageUri()).setDescription("Coffee beans")
                                         .setUri("http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg"))));
                     }
-                })).setMessages((new ArrayList<WalletObjectMessage>() {
+                })).setMessages((new ArrayList<Message>() {
                     {
-                        add((new WalletObjectMessage()).setHeader("Welcome to Banconrista Rewards!")
+                        add((new Message()).setHeader("Welcome to Banconrista Rewards!")
                                 .setBody("Featuring our new bacon donuts."));
                     }
                 })).setRewardsTier("Gold").setRewardsTierLabel("Tier").setLocations((new ArrayList<LatLongPoint>() {
@@ -249,9 +249,9 @@ public class ResourceDefinitions {
                         })));
 
                     }
-                })).setShowLastUpdateTime(true)).setMessages((new ArrayList<WalletObjectMessage>() {
+                })).setShowLastUpdateTime(true)).setMessages((new ArrayList<Message>() {
                     {
-                        add((new WalletObjectMessage()).setHeader("Jane, welcome to Banconrista Rewards")
+                        add((new Message()).setHeader("Jane, welcome to Banconrista Rewards")
                                 .setBody("Thanks for joining our program. Show this message to "
                                         + "our barista for your first free coffee on us!"));
                     }
@@ -291,7 +291,7 @@ public class ResourceDefinitions {
                 // optional. Check design and reference api for more
                 .setMerchantName("Baconrista")
                 .setProgramLogo(new Image().setSourceUri(
-                        new Uri().setUri("http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg")))
+                        new ImageUri().setUri("http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg")))
                 .setTextModulesData((new ArrayList<TextModuleData>() {
                     {
                         add((new TextModuleData()).setHeader("Where to Redeem")
@@ -386,7 +386,7 @@ public class ResourceDefinitions {
                     {
                         add((new LatLongPoint()).setLatitude(37.424015499999996).setLongitude(-122.09259560000001));
                     }
-                })).setReview((new CommonWalletObjectClassReview()).setComments("Real Auto Approval by system"))
+                })).setReview((new Review()).setComments("Real Auto Approval by system"))
                 .setTextModulesData((new ArrayList<TextModuleData>() {
                     {
                         add((new TextModuleData()).setHeader("Custom Details")
@@ -400,12 +400,12 @@ public class ResourceDefinitions {
                 }))).setImageModulesData((new ArrayList<ImageModuleData>() {
                     {
                         add((new ImageModuleData())
-                                .setMainImage((new Image()).setSourceUri((new Uri()).setDescription("Coffee beans")
+                                .setMainImage((new Image()).setSourceUri((new ImageUri()).setDescription("Coffee beans")
                                         .setUri("http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg"))));
                     }
                 }))
                 .setLogo((new Image()).setSourceUri(
-                        (new Uri()).setUri("https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg")
+                        (new ImageUri()).setUri("https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg")
                                 .setDescription("Baconrista stadium logo")))
                 .setVenue((new EventVenue())
                         .setName((new LocalizedString()).setDefaultValue(
@@ -489,7 +489,7 @@ public class ResourceDefinitions {
                     {
                         add((new LatLongPoint()).setLatitude(37.424015499999996).setLongitude(-122.09259560000001));
                     }
-                })).setReview((new CommonWalletObjectClassReview()).setComments("Real Auto Approval by system"))
+                })).setReview((new Review()).setComments("Real Auto Approval by system"))
                 .setTextModulesData((new ArrayList<TextModuleData>() {
                     {
                         add((new TextModuleData()).setHeader("Custom Flight Details")
@@ -503,7 +503,7 @@ public class ResourceDefinitions {
                 }))).setImageModulesData((new ArrayList<ImageModuleData>() {
                     {
                         add((new ImageModuleData())
-                                .setMainImage((new Image()).setSourceUri((new Uri()).setDescription("Coffee beans")
+                                .setMainImage((new Image()).setSourceUri((new ImageUri()).setDescription("Coffee beans")
                                         .setUri("http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg"))));
                     }
                 }));
@@ -565,7 +565,7 @@ public class ResourceDefinitions {
                 // required
                 .setId(classId).setIssuerName("Baconrista Bus").setReviewStatus("underReview").setTransitType("bus")
                 .setLogo((new Image()).setSourceUri(
-                        (new Uri()).setUri("https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png")
+                        (new ImageUri()).setUri("https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png")
                                 .setDescription("Baconrista Bus")));
         return payload;
     }
