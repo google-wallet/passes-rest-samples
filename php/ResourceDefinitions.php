@@ -45,7 +45,7 @@ class ResourceDefinitions {
 
 	    // There is a client lib to help make the data structure. Newest client is on devsite:
 	    //// https://developers.google.com/pay/passes/support/libraries#libraries
-		$titleImageUri = new Google_Service_Walletobjects_Uri();
+		$titleImageUri = new Google_Service_Walletobjects_ImageUri();
 		$titleImageUri->setUri("http://farm4.staticflickr.com/3723/11177041115_6e6a3b6f49_o.jpg");
 		$titleImage = new Google_Service_Walletobjects_Image();
 		$titleImage->setSourceUri($titleImageUri);
@@ -132,7 +132,7 @@ class ResourceDefinitions {
 		$location->setLongitude(-122.09259560000001);
 		$locations = array($location);
 
-		$logoUri = new Google_Service_Walletobjects_Uri();
+		$logoUri = new Google_Service_Walletobjects_ImageUri();
 		$logoUri->setUri("https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg");
 		$logoUri->setDescription("Baconrista stadium logo");
 		$logoImage = new Google_Service_Walletobjects_Image();
@@ -309,7 +309,7 @@ class ResourceDefinitions {
 		$linksModuleData = new Google_Service_Walletobjects_LinksModuleData();
 		$linksModuleData->setUris(array($locationUri, $telephoneUri));
 
-		$imageUri = new Google_Service_Walletobjects_Uri();
+		$imageUri = new Google_Service_Walletobjects_ImageUri();
 		$imageUri->setUri("https://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg");
 		$imageUri->setDescription("Baconrista flights image");
 		$image = new Google_Service_Walletobjects_Image();
@@ -402,7 +402,7 @@ class ResourceDefinitions {
 	    //// https://developers.google.com/pay/passes/support/libraries#libraries
 
 
-		$logoUri = new Google_Service_Walletobjects_Uri();
+		$logoUri = new Google_Service_Walletobjects_ImageUri();
 		$logoUri->setUri("http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg");
 		$logoImage = new Google_Service_Walletobjects_Image();
 		$logoImage->setSourceUri($logoUri);
@@ -520,7 +520,7 @@ class ResourceDefinitions {
 	    // There is a client lib to help make the data structure. Newest client is on devsite:
 		//// https://developers.google.com/pay/passes/support/libraries#libraries
 		
-		$logoUri = new Google_Service_Walletobjects_Uri();
+		$logoUri = new Google_Service_Walletobjects_ImageUri();
 		$logoUri->setUri("http://farm8.staticflickr.com/7340/11177041185_a61a7f2139_o.jpg");
 		$logoImage = new Google_Service_Walletobjects_Image();
 		$logoImage->setSourceUri($logoUri);
@@ -540,7 +540,7 @@ class ResourceDefinitions {
 		$linksModuleData = new Google_Service_Walletobjects_LinksModuleData();
 		$linksModuleData->setUris(array($locationUri, $telephoneUri));
 
-		$imageUri = new Google_Service_Walletobjects_Uri();
+		$imageUri = new Google_Service_Walletobjects_ImageUri();
 		$imageUri->setUri("http://farm4.staticflickr.com/3738/12440799783_3dc3c20606_b.jpg");
 		$imageUri->setDescription("Baconrista Loyalty Image");
 		$image = new Google_Service_Walletobjects_Image();
@@ -553,7 +553,7 @@ class ResourceDefinitions {
 		$location->setLongitude(-122.09259560000001);
 		$locations = array($location);
 
-		$messageOne = new Google_Service_Walletobjects_WalletObjectMessage();
+		$messageOne = new Google_Service_Walletobjects_Message();
 		$messageOne->setBody("Featuring our new bacon donuts.");
 		$messageOne->setHeader("Welcome to Banconrista Rewards!");
 		$messages = array($messageOne);
@@ -623,7 +623,7 @@ class ResourceDefinitions {
 		$location->setLongitude(-122.09259560000001);
 		$locations = array($location);
 
-		$messageOne = new Google_Service_Walletobjects_WalletObjectMessage();
+		$messageOne = new Google_Service_Walletobjects_Message();
 		$messageOne->setBody("Featuring our new bacon donuts.");
 		$messageOne->setHeader("Thanks for joining our program. Show this message to " .
         					"our barista for your first free coffee on us!");
@@ -692,7 +692,7 @@ class ResourceDefinitions {
 
 	    // There is a client lib to help make the data structure. Newest client is on devsite:
 	    //// https://developers.google.com/pay/passes/support/libraries#libraries
-		$titleImageUri = new Google_Service_Walletobjects_Uri();
+		$titleImageUri = new Google_Service_Walletobjects_ImageUri();
 		$titleImageUri->setUri("https://live.staticflickr.com/65535/48690277162_cd05f03f4d_o.png");
 		$titleImage = new Google_Service_Walletobjects_Image();
 		$titleImage->setSourceUri($titleImageUri);
