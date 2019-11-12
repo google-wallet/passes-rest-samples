@@ -8,3 +8,5 @@ These samples showcases several aspects of the API:
 * Defining Class and Object resource definitions
 * Insertion of classes and objects via Google Pay API for Passes REST API
 * Signing a JSON Web Token that is used to generate save links or used in JS Web button
+
+[Guides](https://developers.google.com/pay/passes/guides/overview/about/about-google-pay-api-for-passes) and [Reference](https://developers.google.com/pay/passes/rest) documentation.
