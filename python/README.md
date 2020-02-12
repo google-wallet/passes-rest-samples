@@ -62,4 +62,4 @@ Below is a procedure for modifying these sample passes:
 1. Choose your pass type to demo in the program.
 
 ## Updating a Pass
-In this quick start application, every demo run will have a unique class and object. If you want to change data of an already inserted class or object, as noted in our [use cases](https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/engage-through-google-pay), implement the update or patch methods. Check reference API [summary](https://developers.google.com/pay/passes/reference/v1/).
+In this quick start application, every demo run will have a unique class and object. If you want to change data of an already inserted class or object, as noted in our [use cases](https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/engage-through-google-pay), implement the update or patch methods. Check reference API [summary](https://developers.google.com/pay/passes/rest).

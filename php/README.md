@@ -59,4 +59,4 @@ Read the output, you should see:
 1. Choose the pass type to demo.
 
 ## Updating a pass
-In this quickstart application, every demo run will have a unique class and object. If you want to change data of an already inserted class or object, as noted in our [use cases](https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/engage-through-google-pay), implement the update() or patch methods(). Check reference API [summary](https://developers.google.com/pay/passes/reference/v1/).
+In this quickstart application, every demo run will have a unique class and object. If you want to change data of an already inserted class or object, as noted in our [use cases](https://developers.google.com/pay/passes/guides/get-started/implementing-the-api/engage-through-google-pay), implement the update() or patch methods(). Check reference API [summary](https://developers.google.com/pay/passes/rest).

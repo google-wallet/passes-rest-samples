@@ -59,6 +59,6 @@ Read the output, you should see:
 1. Choose the modified pass type to demo.
 
 ## Updating a pass
-If you want to change data to inserted classes or objects, implement update() and patch(). Check reference API: [Summary](https://developers.google.com/pay/passes/reference/v1/)
+If you want to change data to inserted classes or objects, implement update() and patch(). Check reference API: [Summary](https://developers.google.com/pay/passes/rest)
 
 These methods are also implemented in the C# [client library](https://developers.google.com/pay/passes/support/libraries#libraries).
