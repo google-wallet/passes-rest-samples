@@ -20,7 +20,7 @@ For users to save a Google pass, they need to click a save link or save button. 
 To see a use this quickstart to generate a signed jwt, in your terminal/console:
 1. Follow steps 1 and 2 in [Get Access to REST API](https://developers.google.com/pay/passes/guides/get-started/basic-setup/get-access-to-rest-api) to create a Google Pay API for Passes account and tie your service account to it.
 1. Navigate to where the project is with these quickstart files.
-1. Download dependencies `composer require google/apiclient:"^2.0"`.
+1. Download dependencies `composer require google/apiclient:"^2.4"`.
 	1. The preferred method is via [composer](https://getcomposer.org/). Follow the [installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not already have composer installed.
 1. Edit the following string values in the file `Config.php`:
 	1. SERVICE_ACCOUNT_EMAIL_ADDRESS: the value of the email in your service account key file.
