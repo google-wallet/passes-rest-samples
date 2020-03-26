@@ -23,7 +23,7 @@
  *
  * <p>
  * For more information about this service, see the API
- * <a href="https://developers.google.com/commerce/wallet/objects/" target="_blank">Documentation</a>
+ * <a href="https://developers.google.com/pay/passes" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -4605,9 +4605,19 @@ class Google_Service_Walletobjects_FirstRowOption extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
+  protected $fieldOptionType = 'Google_Service_Walletobjects_FieldSelector';
+  protected $fieldOptionDataType = '';
   public $transitOption;
 
 
+  public function setFieldOption(Google_Service_Walletobjects_FieldSelector $fieldOption)
+  {
+    $this->fieldOption = $fieldOption;
+  }
+  public function getFieldOption()
+  {
+    return $this->fieldOption;
+  }
   public function setTransitOption($transitOption)
   {
     $this->transitOption = $transitOption;
@@ -5143,6 +5153,7 @@ class Google_Service_Walletobjects_FlightObject extends Google_Collection
   public $disableExpirationNotification;
   public $hasLinkedDevice;
   public $hasUsers;
+  public $hexBackgroundColor;
   public $id;
   protected $imageModulesDataType = 'Google_Service_Walletobjects_ImageModuleData';
   protected $imageModulesDataDataType = 'array';
@@ -5232,6 +5243,14 @@ class Google_Service_Walletobjects_FlightObject extends Google_Collection
   public function getHasUsers()
   {
     return $this->hasUsers;
+  }
+  public function setHexBackgroundColor($hexBackgroundColor)
+  {
+    $this->hexBackgroundColor = $hexBackgroundColor;
+  }
+  public function getHexBackgroundColor()
+  {
+    return $this->hexBackgroundColor;
   }
   public function setId($id)
   {
@@ -5448,6 +5467,8 @@ class Google_Service_Walletobjects_GiftCardClass extends Google_Collection
   protected $callbackOptionsType = 'Google_Service_Walletobjects_CallbackOptions';
   protected $callbackOptionsDataType = '';
   public $cardNumberLabel;
+  protected $classTemplateInfoType = 'Google_Service_Walletobjects_ClassTemplateInfo';
+  protected $classTemplateInfoDataType = '';
   public $countryCode;
   public $enableSmartTap;
   public $eventNumberLabel;
@@ -5526,6 +5547,14 @@ class Google_Service_Walletobjects_GiftCardClass extends Google_Collection
   public function getCardNumberLabel()
   {
     return $this->cardNumberLabel;
+  }
+  public function setClassTemplateInfo(Google_Service_Walletobjects_ClassTemplateInfo $classTemplateInfo)
+  {
+    $this->classTemplateInfo = $classTemplateInfo;
+  }
+  public function getClassTemplateInfo()
+  {
+    return $this->classTemplateInfo;
   }
   public function setCountryCode($countryCode)
   {
@@ -5835,7 +5864,6 @@ class Google_Service_Walletobjects_GiftCardObject extends Google_Collection
   protected $infoModuleDataType = 'Google_Service_Walletobjects_InfoModuleData';
   protected $infoModuleDataDataType = '';
   public $kind;
-  public $linkedOfferIds;
   protected $linksModuleDataType = 'Google_Service_Walletobjects_LinksModuleData';
   protected $linksModuleDataDataType = '';
   protected $locationsType = 'Google_Service_Walletobjects_LatLongPoint';
@@ -5971,14 +5999,6 @@ class Google_Service_Walletobjects_GiftCardObject extends Google_Collection
   public function getKind()
   {
     return $this->kind;
-  }
-  public function setLinkedOfferIds($linkedOfferIds)
-  {
-    $this->linkedOfferIds = $linkedOfferIds;
-  }
-  public function getLinkedOfferIds()
-  {
-    return $this->linkedOfferIds;
   }
   public function setLinksModuleData(Google_Service_Walletobjects_LinksModuleData $linksModuleData)
   {
@@ -6649,6 +6669,8 @@ class Google_Service_Walletobjects_LoyaltyClass extends Google_Collection
   public $allowMultipleUsersPerObject;
   protected $callbackOptionsType = 'Google_Service_Walletobjects_CallbackOptions';
   protected $callbackOptionsDataType = '';
+  protected $classTemplateInfoType = 'Google_Service_Walletobjects_ClassTemplateInfo';
+  protected $classTemplateInfoDataType = '';
   public $countryCode;
   protected $discoverableProgramType = 'Google_Service_Walletobjects_DiscoverableProgram';
   protected $discoverableProgramDataType = '';
@@ -6737,6 +6759,14 @@ class Google_Service_Walletobjects_LoyaltyClass extends Google_Collection
   public function getCallbackOptions()
   {
     return $this->callbackOptions;
+  }
+  public function setClassTemplateInfo(Google_Service_Walletobjects_ClassTemplateInfo $classTemplateInfo)
+  {
+    $this->classTemplateInfo = $classTemplateInfo;
+  }
+  public function getClassTemplateInfo()
+  {
+    return $this->classTemplateInfo;
   }
   public function setCountryCode($countryCode)
   {
@@ -7604,6 +7634,8 @@ class Google_Service_Walletobjects_OfferClass extends Google_Collection
   public $allowMultipleUsersPerObject;
   protected $callbackOptionsType = 'Google_Service_Walletobjects_CallbackOptions';
   protected $callbackOptionsDataType = '';
+  protected $classTemplateInfoType = 'Google_Service_Walletobjects_ClassTemplateInfo';
+  protected $classTemplateInfoDataType = '';
   public $countryCode;
   public $details;
   public $enableSmartTap;
@@ -7673,6 +7705,14 @@ class Google_Service_Walletobjects_OfferClass extends Google_Collection
   public function getCallbackOptions()
   {
     return $this->callbackOptions;
+  }
+  public function setClassTemplateInfo(Google_Service_Walletobjects_ClassTemplateInfo $classTemplateInfo)
+  {
+    $this->classTemplateInfo = $classTemplateInfo;
+  }
+  public function getClassTemplateInfo()
+  {
+    return $this->classTemplateInfo;
   }
   public function setCountryCode($countryCode)
   {

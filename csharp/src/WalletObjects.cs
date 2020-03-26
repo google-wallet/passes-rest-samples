@@ -29,19 +29,19 @@ using csharp.Data;
 * \section ApiInfo API Version Information
 *    <table>
 *      <tr><th>API
-*          <td><a href='https://developers.google.com/pay/passes/rest'>Google Pay Passes API</a>
+*          <td><a href='https://developers.google.com/pay/passes'>Google Pay Passes API</a>
 *      <tr><th>API Version<td>v1
 *      <tr><th>API Rev<td>0
 *      <tr><th>API Docs
-*          <td><a href='https://developers.google.com/pay/passes/rest'>
-*              https://developers.google.com/pay/passes/rest</a>
+*          <td><a href='https://developers.google.com/pay/passes'>
+*              https://developers.google.com/pay/passes</a>
 *      <tr><th>Discovery Name<td>walletobjects
 *    </table>
 *
 * \section ForMoreInfo For More Information
 *
 * The complete API documentation for using Google Pay Passes API can be found at
-* <a href='https://developers.google.com/commerce/wallet/objects/'>https://developers.google.com/commerce/wallet/objects/</a>.
+* <a href='https://developers.google.com/pay/passes'>https://developers.google.com/pay/passes</a>.
 *
 * For more information about the Google APIs Client Library for .NET, see
 * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -841,9 +841,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the object, those will be merged with
-        /// the image data defined on the class. The maximum number of these fields (combined with the object) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -861,8 +860,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the object, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -937,8 +936,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionLabel")]
         public virtual string SectionLabel { get; set; } 
 
-        /// <summary>Text module data. If text modules data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -1039,9 +1038,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the class, those will be merged with
-        /// the image data defined on the object. The maximum number of these fields (combined with the class) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -1061,8 +1059,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedOfferIds")]
         public virtual System.Collections.Generic.IList<string> LinkedOfferIds { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the class, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -1091,12 +1089,12 @@ namespace csharp.Data
         public virtual string SmartTapRedemptionValue { get; set; } 
 
         /// <summary>Required. The state of the object. This field is used to determine how an object is displayed in
-        /// the app. For example, an `inactive` object is no longer displayed in the Google Pay app.</summary>
+        /// the app. For example, an `inactive` object is moved to the "Expired passes" section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -1204,6 +1202,10 @@ namespace csharp.Data
 
     public class FirstRowOption : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A reference to the field to be displayed in the first row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldOption")]
+        public virtual FieldSelector FieldOption { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("transitOption")]
         public virtual string TransitOption { get; set; } 
 
@@ -1323,9 +1325,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the object, those will be merged with
-        /// the image data defined on the class. The maximum number of these fields (combined with the object) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -1343,8 +1344,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the object, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -1504,8 +1505,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewStatus")]
         public virtual string ReviewStatus { get; set; } 
 
-        /// <summary>Text module data. If text modules data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -1623,6 +1624,13 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasUsers")]
         public virtual System.Nullable<bool> HasUsers { get; set; } 
 
+        /// <summary>The background color for the card. If not set the dominant color of the hero image is used, and if
+        /// no hero image is set, the dominant color of the logo is used. The format is #rrggbb where rrggbb is a hex
+        /// RGB triplet, such as `#ffcc00`. You can also use the shorthand version of the RGB triplet which is #rgb,
+        /// such as `#fc0`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hexBackgroundColor")]
+        public virtual string HexBackgroundColor { get; set; } 
+
         /// <summary>Required. The unique identifier for an object. This ID must be unique across all objects from an
         /// issuer. This value should follow the format issuer ID.identifier where the former is issued by Google and
         /// latter is chosen by you. The unique identifier should only include alphanumeric characters, '.', '_', or
@@ -1630,9 +1638,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the class, those will be merged with
-        /// the image data defined on the object. The maximum number of these fields (combined with the class) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -1645,8 +1652,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the class, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -1680,12 +1687,12 @@ namespace csharp.Data
         public virtual string SmartTapRedemptionValue { get; set; } 
 
         /// <summary>Required. The state of the object. This field is used to determine how an object is displayed in
-        /// the app. For example, an `inactive` object is no longer displayed in the Google Pay app.</summary>
+        /// the app. For example, an `inactive` object is moved to the "Expired passes" section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -1767,6 +1774,11 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cardNumberLabel")]
         public virtual string CardNumberLabel { get; set; } 
 
+        /// <summary>Template information about how the class should be displayed. If unset, Google will fallback to a
+        /// default set of fields to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classTemplateInfo")]
+        public virtual ClassTemplateInfo ClassTemplateInfo { get; set; } 
+
         /// <summary>Country code used to display the card's country (when the user is not in that country), as well as
         /// to display localized content when content is not available in the user's locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
@@ -1805,9 +1817,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the object, those will be merged with
-        /// the image data defined on the class. The maximum number of these fields (combined with the object) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -1825,8 +1836,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the object, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -1904,8 +1915,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewStatus")]
         public virtual string ReviewStatus { get; set; } 
 
-        /// <summary>Text module data. If text modules data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -2013,9 +2024,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the class, those will be merged with
-        /// the image data defined on the object. The maximum number of these fields (combined with the class) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -2028,11 +2038,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("linkedOfferIds")]
-        public virtual System.Collections.Generic.IList<string> LinkedOfferIds { get; set; } 
-
-        /// <summary>Links module data. If links module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the class, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -2056,12 +2063,12 @@ namespace csharp.Data
         public virtual string SmartTapRedemptionValue { get; set; } 
 
         /// <summary>Required. The state of the object. This field is used to determine how an object is displayed in
-        /// the app. For example, an `inactive` object is no longer displayed in the Google Pay app.</summary>
+        /// the app. For example, an `inactive` object is moved to the "Expired passes" section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -2421,6 +2428,11 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("callbackOptions")]
         public virtual CallbackOptions CallbackOptions { get; set; } 
 
+        /// <summary>Template information about how the class should be displayed. If unset, Google will fallback to a
+        /// default set of fields to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classTemplateInfo")]
+        public virtual ClassTemplateInfo ClassTemplateInfo { get; set; } 
+
         /// <summary>Country code used to display the card's country (when the user is not in that country), as well as
         /// to display localized content when content is not available in the user's locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
@@ -2460,9 +2472,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the object, those will be merged with
-        /// the image data defined on the class. The maximum number of these fields (combined with the object) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -2480,8 +2491,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the object, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -2589,8 +2600,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryRewardsTierLabel")]
         public virtual string SecondaryRewardsTierLabel { get; set; } 
 
-        /// <summary>Text module data. If text modules data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -2687,9 +2698,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the class, those will be merged with
-        /// the image data defined on the object. The maximum number of these fields (combined with the class) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -2709,8 +2719,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedOfferIds")]
         public virtual System.Collections.Generic.IList<string> LinkedOfferIds { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the class, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -2739,12 +2749,12 @@ namespace csharp.Data
         public virtual string SmartTapRedemptionValue { get; set; } 
 
         /// <summary>Required. The state of the object. This field is used to determine how an object is displayed in
-        /// the app. For example, an `inactive` object is no longer displayed in the Google Pay app.</summary>
+        /// the app. For example, an `inactive` object is moved to the "Expired passes" section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -2930,6 +2940,11 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("callbackOptions")]
         public virtual CallbackOptions CallbackOptions { get; set; } 
 
+        /// <summary>Template information about how the class should be displayed. If unset, Google will fallback to a
+        /// default set of fields to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classTemplateInfo")]
+        public virtual ClassTemplateInfo ClassTemplateInfo { get; set; } 
+
         /// <summary>Country code used to display the card's country (when the user is not in that country), as well as
         /// to display localized content when content is not available in the user's locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
@@ -2976,9 +2991,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the object, those will be merged with
-        /// the image data defined on the class. The maximum number of these fields (combined with the object) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -2996,8 +3010,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the object, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -3080,8 +3094,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shortTitle")]
         public virtual string ShortTitle { get; set; } 
 
-        /// <summary>Text module data. If text modules data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -3179,9 +3193,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the class, those will be merged with
-        /// the image data defined on the object. The maximum number of these fields (combined with the class) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -3194,8 +3207,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the class, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -3215,12 +3228,12 @@ namespace csharp.Data
         public virtual string SmartTapRedemptionValue { get; set; } 
 
         /// <summary>Required. The state of the object. This field is used to determine how an object is displayed in
-        /// the app. For example, an `inactive` object is no longer displayed in the Google Pay app.</summary>
+        /// the app. For example, an `inactive` object is moved to the "Expired passes" section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -3892,9 +3905,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the object, those will be merged with
-        /// the image data defined on the class. The maximum number of these fields (combined with the object) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -3913,8 +3925,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageOverride")]
         public virtual string LanguageOverride { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the object, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -3963,8 +3975,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewStatus")]
         public virtual string ReviewStatus { get; set; } 
 
-        /// <summary>Text module data. If text modules data is also defined on the object, both will be displayed. The
-        /// maximum number of these fields (combined with the object) is 10.</summary>
+        /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
@@ -4085,9 +4097,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Image module data. If image modules data is also defined on the class, those will be merged with
-        /// the image data defined on the object. The maximum number of these fields (combined with the class) is
-        /// 1.</summary>
+        /// <summary>Image module data. The maximum number of these fields displayed is 1 from object level and 1 for
+        /// class object level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; } 
 
@@ -4095,8 +4106,8 @@ namespace csharp.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoModuleData")]
         public virtual InfoModuleData InfoModuleData { get; set; } 
 
-        /// <summary>Links module data. If links module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// <summary>Links module data. If links module data is also defined on the class, both will be
+        /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; } 
 
@@ -4129,12 +4140,12 @@ namespace csharp.Data
         public virtual string SmartTapRedemptionValue { get; set; } 
 
         /// <summary>Required. The state of the object. This field is used to determine how an object is displayed in
-        /// the app. For example, an `inactive` object is no longer displayed in the Google Pay app.</summary>
+        /// the app. For example, an `inactive` object is moved to the "Expired passes" section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
         /// <summary>Text module data. If text module data is also defined on the class, both will be displayed. The
-        /// maximum number of these fields (combined with the class) is 10.</summary>
+        /// maximum number of these fields displayed is 10 from the object and 10 from the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; } 
 
