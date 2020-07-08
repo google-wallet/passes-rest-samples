@@ -42,7 +42,7 @@ function demoFatJwt($verticalType, $classId, $objectId){
 
     if ($fatJwt != NULL){
         printf("\nThis is an \"fat\" jwt:\n%s\n" , $fatJwt);
-        printf("\nyou can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt");
+        printf("\nyou can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://jwt.io");
         printf("\nTry this save link in your browser:\n%s%s\n", SAVE_LINK, $fatJwt);
         printf("\nHowever, because a \"fat\" jwt is long, they are not suited for hyperlinks (get truncated). Recommend only using \"fat\" JWt with web-JS button only. Check:\n%s" ,"https://developers.google.com/pay/passes/reference/s2w-reference\n\n");
     }
@@ -67,7 +67,7 @@ function demoObjectJwt($verticalType, $classId, $objectId){
 
     if ($objectJwt != null){
         printf("\nThis is an \"object\" jwt:\n%s\n" , $objectJwt);
-        printf("\nyou can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt");
+        printf("\nyou can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://jwt.io");
         printf("\nTry this save link in your browser:\n%s%s\n\n\n", SAVE_LINK, $objectJwt);
     }
     return;
@@ -93,7 +93,7 @@ function demoSkinnyJwt($verticalType, $classId, $objectId){
 
     if ($skinnyJwt  != null){
         printf("\nThis is an \"skinny\" jwt:\n%s\n" , $skinnyJwt );
-        printf("\nyou can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt");
+        printf("\nyou can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://jwt.io");
         printf("\nTry this save link in your browser:\n%s%s\n", SAVE_LINK, $skinnyJwt );
         printf("\nthis is the shortest type of JWT; recommended for Android intents/redirects\n\n\n");
     }

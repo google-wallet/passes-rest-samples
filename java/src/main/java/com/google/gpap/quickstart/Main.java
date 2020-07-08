@@ -37,7 +37,7 @@ public class Main {
 
         if (fatJwt != null){
             System.out.println(String.format("This is a \"fat\" jwt:\n%s\n" , fatJwt));
-            System.out.println(String.format("you can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt"));
+            System.out.println(String.format("you can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://jwt.io"));
             System.out.println(String.format("Try this save link in your browser:\n%s%s\n", SAVE_LINK, fatJwt));
             System.out.println(String.format("However, because a \"fat\" jwt is long, they are not suited for hyperlinks (get truncated). Recommend only using \"fat\" JWt with web-JS button only. Check:\n%s" ,"https://developers.google.com/pay/passes/reference/s2w-reference"));
         }
@@ -62,7 +62,7 @@ public class Main {
 
         if (objectJwt != null){
             System.out.println(String.format("This is an \"object\" jwt:\n%s\n" , objectJwt));
-            System.out.println(String.format("you can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt"));
+            System.out.println(String.format("you can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://jwt.io"));
             System.out.println(String.format("Try this save link in your browser:\n%s%s\n", SAVE_LINK, objectJwt));
         }
         return;
@@ -88,7 +88,7 @@ public class Main {
 
         if (skinnyJwt  != null){
             System.out.println(String.format("This is a \"skinny\" jwt:\n%s\n" , skinnyJwt ));
-            System.out.println(String.format("you can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt"));
+            System.out.println(String.format("you can decode it with a tool to see the unsigned JWT representation:\n%s\n" , "https://jwt.io"));
             System.out.println(String.format("Try this save link in your browser:\n%s%s\n", SAVE_LINK, skinnyJwt ));
             System.out.println("this is the shortest type of JWT; recommended for Android intents/redirects\n");
         }
