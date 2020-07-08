@@ -38,7 +38,7 @@ def demoObjectJwt(verticalType ,classId, objectId):
 
   if objectJwt is not None:
     print('This is an "object" jwt:\n%s\n' % (objectJwt.decode('UTF-8')) )
-    print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
+    print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://jwt.io') )
     print('Try this save link in your browser:\n%s%s' % (SAVE_LINK, objectJwt.decode('UTF-8')))
 
   return
@@ -64,7 +64,7 @@ def demoFatJwt(verticalType, classId, objectId):
 
   if fatJwt is not None:
     print('This is a "fat" jwt:\n%s\n' % (fatJwt.decode('UTF-8')) )
-    print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
+    print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://jwt.io') )
     print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, fatJwt.decode('UTF-8')))
     print('However, because a "fat" jwt is long, they are not suited for hyperlinks (get truncated). Recommend only using "fat" JWt with web-JS button only. Check:\n%s' % ('https://developers.google.com/pay/passes/reference/s2w-reference'))
 
@@ -91,7 +91,7 @@ def demoSkinnyJwt(verticalType, classId, objectId):
 
   if skinnyJwt is not None:
     print('This is an "skinny" jwt:\n%s\n' % (skinnyJwt.decode('UTF-8')) )
-    print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt') )
+    print('you can decode it with a tool to see the unsigned JWT representation:\n%s\n' % ('https://jwt.io') )
     print('Try this save link in your browser:\n%s%s\n' % (SAVE_LINK, skinnyJwt.decode('UTF-8')))
     print('this is the shortest type of JWT; recommended for Android intents/redirects\n')
 

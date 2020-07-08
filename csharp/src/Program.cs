@@ -43,7 +43,7 @@ namespace csharp
             if (fatJwt != null)
             {
                 System.Console.WriteLine($"This is a \"fat\" jwt:\n{fatJwt}\n");
-                System.Console.WriteLine("you can decode it with a tool to see the unsigned JWT representation:\nhttps://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt\n");
+                System.Console.WriteLine("you can decode it with a tool to see the unsigned JWT representation:\nhttps://jwt.io\n");
                 System.Console.WriteLine($"Try this save link in your browser:\n{SAVE_LINK}{fatJwt}\n");
                 System.Console.WriteLine($"However, because a \"fat\" jwt is long, they are not suited for hyperlinks (get truncated). Recommend only using \"fat\" JWt with web-JS button only. Check:\nhttps://developers.google.com/pay/passes/reference/s2w-reference");
             }
@@ -69,7 +69,7 @@ namespace csharp
             if (objectJwt != null)
             {
                 System.Console.WriteLine($"This is an \"object\" jwt:\n{objectJwt}\n");
-                System.Console.WriteLine($"you can decode it with a tool to see the unsigned JWT representation:\nhttps://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt\n");
+                System.Console.WriteLine($"you can decode it with a tool to see the unsigned JWT representation:\nhttps://jwt.io\n");
                 System.Console.WriteLine($"Try this save link in your browser:\n{SAVE_LINK}{objectJwt}\n");
             }
             return;
@@ -97,7 +97,7 @@ namespace csharp
             if (skinnyJwt != null)
             {
                 System.Console.WriteLine($"This is a \"skinny\" jwt:\n{skinnyJwt}\n");
-                System.Console.WriteLine("you can decode it with a tool to see the unsigned JWT representation:\nhttps://developers.google.com/pay/passes/support/testing#test-and-debug-a-jwt\n");
+                System.Console.WriteLine("you can decode it with a tool to see the unsigned JWT representation:\nhttps://jwt.io\n");
                 System.Console.WriteLine($"Try this save link in your browser:\n{SAVE_LINK}{skinnyJwt}\n");
                 System.Console.WriteLine("this is the shortest type of JWT; recommended for Android intents/redirects\n");
             }
