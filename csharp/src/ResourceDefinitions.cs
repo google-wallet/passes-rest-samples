@@ -30,10 +30,6 @@ namespace csharp
 
         public static ResourceDefinitions getInstance()
         {
-            if (resourceDefinitions == null)
-            {
-                resourceDefinitions = new ResourceDefinitions();
-            }
             return resourceDefinitions;
         }
         /// <summary>
