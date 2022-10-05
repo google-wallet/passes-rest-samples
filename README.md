@@ -1,6 +1,8 @@
 passes-rest-samples
 ===================
 
+**This repository has been archived and is no longer being maintained. The Google Pay for Passes API has been re-launched as the Google Wallet API. Code samples can be found in the [google-pay/wallet-samples](https://github.com/google-pay/wallet-samples) repository.**
+
 This project demonstrates integration of the basic components of the Google Pay API for Passes, for various programming languages. See each of the sub-directories for your specific language.
 
 These samples showcases several aspects of the API:
